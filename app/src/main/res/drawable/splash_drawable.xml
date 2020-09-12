@@ -3,6 +3,6 @@
 
     <item android:drawable="@color/colorPrimary" />
     <item
-        android:drawable="@drawable/ic_launcher_foreground"
+        android:drawable="@drawable/ic_sb_logo"
         android:gravity="center" />
 </layer-list>
