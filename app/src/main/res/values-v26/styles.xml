@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomInput">
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:paddingVertical">4dp</item>
+        <item name="android:background">@drawable/round_input</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColorHint">#C4C4C3</item>
+    </style>
+</resources>

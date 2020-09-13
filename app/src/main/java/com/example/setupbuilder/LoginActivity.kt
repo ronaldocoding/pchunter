@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_activity.*
+import kotlinx.android.synthetic.main.register_activity.*
 
 class LoginActivity : AppCompatActivity () {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +34,11 @@ class LoginActivity : AppCompatActivity () {
         val password = password_login.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this,
-                "email e senha devem ser informados",
-                Toast.LENGTH_LONG).show()
+            if(email.isEmpty())
+                email_login.setError("Esse campo não pode ficar vazio.")
+            if(password.isEmpty())
+                password_login.setError("Esse campo não pode ficar vazio.")
+
             return
         }
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -46,9 +49,14 @@ class LoginActivity : AppCompatActivity () {
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(this,
-                    "Ocorreu um erro",
-                    Toast.LENGTH_LONG).show()
+                if(it.message.toString().contains("password is invalid")){
+                    password_login.setError("Senha incorreta.")
+                }else
+                    if(it.message.toString().contains("There is no user")){
+                    email_login.setError("E-mail não cadastrado.")
+                    }else{
+                        Toast.makeText(this, "Ocorreu um erro inesperado. Tente novamente.", Toast.LENGTH_LONG).show()
+                    }
             }
 
     }

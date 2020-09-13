@@ -15,7 +15,6 @@ class SplashActivity : AppCompatActivity() {
         var user = FirebaseAuth.getInstance().currentUser
 
         if(user != null) {
-            Toast.makeText(this, "User ${user.email}", Toast.LENGTH_LONG).show()
                     var intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()

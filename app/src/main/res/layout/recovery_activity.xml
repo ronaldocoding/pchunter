@@ -5,15 +5,14 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10sp">
+    android:padding="30dp">
 
     <TextView
         android:id="@+id/recovery_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed"
         android:text="Digite seu e-mail"
-        android:textColor="#1C1B1E"
+        style="@style/CustomText"
         android:textSize="20sp" />
 
     <EditText
@@ -21,13 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        style="@style/CustomInput"
         android:inputType="textEmailAddress"
         android:hint="email@email.com"
         tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="167dp" />
+        tools:layout_editor_absoluteY="167dp"
+        android:layout_marginVertical="10dp"/>
 
     <Button
         android:id="@+id/button2"
+        style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enviar e-mail" />

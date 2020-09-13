@@ -19,7 +19,7 @@
         </activity>
         <activity android:name="com.example.setupbuilder.LoginActivity">
         </activity>
-        <activity android:name="com.example.setupbuilder.RegisterActivity">
+        <activity android:name="com.example.setupbuilder.RegisterActivity" android:theme="@style/AppLightTheme">
         </activity>
         <activity android:name="com.example.setupbuilder.HomeActivity">
         </activity>

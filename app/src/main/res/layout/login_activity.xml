@@ -7,7 +7,7 @@
     android:gravity="center"
 
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="30dp"
     tools:context=".LoginActivity">
 
     <EditText
@@ -15,19 +15,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        style="@style/CustomInput"
         android:hint="youremail@email.com"
+        android:drawableStart="@drawable/custom_email_icon"
+        android:drawablePadding="10dp"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        tools:layout_editor_absoluteY="61dp" />
+        tools:layout_editor_absoluteY="61dp"
+        android:layout_marginBottom="10dp"/>
 
     <EditText
         android:id="@+id/password_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        style="@style/CustomInput"
         android:hint="Your password"
         android:inputType="textPassword"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/custom_password_icon"
         app:layout_constraintEnd_toEndOf="@+id/email_login"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/email_login"
@@ -35,8 +42,11 @@
 
     <TextView
         android:id="@+id/recovery_link"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/CustomText"
         android:text="Esqueceu sua senha?" />
 
     <Button
@@ -44,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Entrar"
+        style="@style/PrimaryButton"
         app:layout_constraintEnd_toEndOf="@+id/password_login"
         app:layout_constraintStart_toStartOf="@+id/password_login"
         app:layout_constraintTop_toBottomOf="@+id/password_login" />
@@ -53,6 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        style="@style/CustomText"
         android:text="Não é registrado? Cadastre-se" />
 
 </LinearLayout>
