@@ -28,7 +28,7 @@
         android:layout_marginVertical="10dp"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/send_email"
         style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

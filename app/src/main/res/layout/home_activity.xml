@@ -52,6 +52,7 @@
         android:id="@+id/delete_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_dark"
         style="@style/PrimaryButton"
         android:text="Excluir conta" />
 
@@ -62,6 +63,8 @@
         style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#2c2c2c"
+
         android:text="Sair" />
 
 </LinearLayout>

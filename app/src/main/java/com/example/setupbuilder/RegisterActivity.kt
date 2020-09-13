@@ -87,12 +87,11 @@ class RegisterActivity : AppCompatActivity() {
         }.addOnFailureListener {
                 if(it.message.toString().contains("already in use")){
                     email_register.setError("Esse e-mail já está sendo usado.")
-                }
-                if(it.message.toString().contains("baddly formated")){
+                }else
+                if(it.message.toString().contains("badly formatted")){
                     email_register.setError("Insira um e-mail válido.")
-                }
-                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                }else
+                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
         }
     }
-
 }
