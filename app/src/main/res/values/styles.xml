@@ -16,10 +16,11 @@
         <item name="android:forceDarkAllowed">true</item>
         <item name="colorPrimary">@android:color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#FFFFFF</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:editTextColor">#FFFFFF</item>
+
     </style>
     //Estilo da Splash Screen
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -34,10 +35,12 @@
         <item name="android:textColorHint">#C4C4C3</item>
 
     </style>
-    <style name="PrimaryButton">
+    <style name="PrimaryButton" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/primary_button</item>
         <item name="android:fontFamily">@font/overpass_font_family</item>
         <item name="android:textSize">15dp</item>
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+
     </style>
     <style name="CustomText">
         <item name="android:fontFamily">@font/poppins_regular</item>

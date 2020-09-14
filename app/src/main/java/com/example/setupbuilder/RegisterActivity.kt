@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import com.example.setupbuilder.model.User
 import kotlinx.android.synthetic.main.register_activity.*
@@ -19,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.register_activity)
 
         button_register.setOnClickListener {
+            progressBarRegister.visibility = View.VISIBLE
             createUser()
         }
 
@@ -63,8 +65,11 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        if(!valid)
+        if(!valid){
+            progressBarRegister.visibility = View.INVISIBLE
             return
+        }
+
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
         .addOnCompleteListener {
@@ -74,17 +79,13 @@ class RegisterActivity : AppCompatActivity() {
                 if (user != null) {
                     FirebaseFirestore.getInstance().collection("users")
                         .add(user)
-                        .addOnSuccessListener {
-                            Toast.makeText(this, "Foi", Toast.LENGTH_LONG).show()
-                        }.addOnFailureListener {
-                            Toast.makeText(this, "Falhou", Toast.LENGTH_LONG).show()
-                        }
                 }
-
+                progressBarRegister.visibility = View.INVISIBLE
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             }
         }.addOnFailureListener {
+                progressBarRegister.visibility = View.INVISIBLE
                 if(it.message.toString().contains("already in use")){
                     email_register.setError("Esse e-mail já está sendo usado.")
                 }else
