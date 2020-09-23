@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SetupBuilder</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Início</string>
+    <string name="title_account">Conta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

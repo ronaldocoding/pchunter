@@ -3,7 +3,6 @@ package com.example.setupbuilder
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -81,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
                         .add(user)
                 }
                 progressBarRegister.visibility = View.INVISIBLE
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, MenuActivity::class.java)
                 startActivity(intent)
             }
         }.addOnFailureListener {

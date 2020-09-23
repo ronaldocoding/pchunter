@@ -1,15 +1,12 @@
 package com.example.setupbuilder
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_activity.*
-import kotlinx.android.synthetic.main.register_activity.*
 
 class LoginActivity : AppCompatActivity () {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +46,7 @@ class LoginActivity : AppCompatActivity () {
             .addOnCompleteListener {
                 if (it.isSuccessful){
                     progressBar.visibility = View.INVISIBLE
-                    val intent = Intent(this, HomeActivity::class.java)
+                    val intent = Intent(this, MenuActivity::class.java)
                     startActivity(intent)
                 }
 
