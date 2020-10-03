@@ -12,6 +12,7 @@ import com.example.setupbuilder.NewSetupActivity
 import com.example.setupbuilder.R
 import com.example.setupbuilder.ViewSetupActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.account_fragment.*
@@ -38,41 +39,30 @@ class HomeFragment : Fragment() {
                 val intent = Intent(context, ViewSetupActivity::class.java)
                 intent.putExtra("setupName", names.get(id.toInt()).toString())
                 startActivity(intent)
-//                MaterialAlertDialogBuilder(it1)
-//                    .setTitle("Exclusão de ${names.get(id.toInt())}")
-//                    .setMessage("Deseja excluir este Setup?")
-//                    .setNeutralButton("Não") { dialog, which ->
-//                        // Respond to neutral button press
-//                    }
-//                    .setPositiveButton("Sim") { dialog, which ->
-//                        FirebaseFirestore.getInstance().collection("setup").whereEqualTo("name", names.get(id.toInt())).get()
-//                            .addOnSuccessListener {documents ->
-//                                for (document in documents) {
-//                                    document.reference.delete().addOnSuccessListener {
-//                                            Toast.makeText(context, "Excluido", Toast.LENGTH_LONG).show()
-//                                        names = loadList()
-//                                    }.addOnFailureListener {
-//                                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
-//                                    }
-//                                }
-//                            }
-//                    }
-//                    .show()
+
             }
         }
 
 
     }
     fun loadList ():Array<String>{
+
+        val user = FirebaseAuth.getInstance().currentUser
         val names = arrayListOf<String>()
         var setupAdapter = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_expandable_list_item_1) }
         lista.adapter = setupAdapter
         setupAdapter?.clear()
-        FirebaseFirestore.getInstance().collection("setup").orderBy("timestamp", Query.Direction.ASCENDING).get()
+        FirebaseFirestore.getInstance().collection("setup")
+            .orderBy("timestamp", Query.Direction.ASCENDING).get()
             .addOnSuccessListener {documents ->
+
                 for (document in documents) {
-                    names+= document.data.get("name").toString()
-                    setupAdapter?.add(document.data.get("name").toString())
+                    val equal = user?.uid?.equals(document.data.get("userUid").toString())
+                    if(equal!!){
+                        names+= document.data.get("name").toString()
+                        setupAdapter?.add(document.data.get("name").toString())
+                    }
+
                 }
             }
         return names

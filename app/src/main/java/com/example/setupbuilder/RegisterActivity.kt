@@ -38,60 +38,59 @@ class RegisterActivity : AppCompatActivity() {
         if (email.isEmpty() || password.isEmpty()) {
             Patterns.EMAIL_ADDRESS
 
-            if(email.isEmpty())
+            if (email.isEmpty())
                 email_register.setError("Esse campo não pode ficar vazio!")
-            if(password.isEmpty())
+            if (password.isEmpty())
                 password_register.setError("Esse campo não pode ficar vazio!")
-            if(name.isEmpty())
+            if (name.isEmpty())
                 name_register.setError("Esse campo não pode ficar vazio!")
             valid = false
         }
 
-        if(!password.equals(password_register2.text.toString())){
+        if (!password.equals(password_register2.text.toString())) {
             password_register2.setError("As senhas não coincidem")
             valid = false
         }
 
-        if(password.length < 6){
+        if (password.length < 6) {
             password_register.setError("A sua senha deve conter no mínimo 6 caracteres")
             valid = false
         }
 
         name.forEach {
-            if(!it.isLetter() && !it.isWhitespace()){
+            if (!it.isLetter() && !it.isWhitespace()) {
                 valid = false
                 name_register.setError("Esse campo não permite números ou caracteres especiais")
             }
         }
 
-        if(!valid){
+        if (!valid) {
             progressBarRegister.visibility = View.INVISIBLE
             return
         }
 
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-        .addOnCompleteListener {
-            if (it.isSuccessful) {
-                var id = it.result?.user?.uid
-                val user = id?.let { it1 -> User(it1, name) }
-                if (user != null) {
-                    FirebaseFirestore.getInstance().collection("users")
-                        .add(user)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    var id = it.result?.user?.uid
+                    val user = User(name)
+                    FirebaseFirestore.getInstance().collection("users").document(id.toString())
+                        .set(user)
+
+                    progressBarRegister.visibility = View.INVISIBLE
+                    val intent = Intent(this, MenuActivity::class.java)
+                    startActivity(intent)
                 }
+            }.addOnFailureListener {
                 progressBarRegister.visibility = View.INVISIBLE
-                val intent = Intent(this, MenuActivity::class.java)
-                startActivity(intent)
-            }
-        }.addOnFailureListener {
-                progressBarRegister.visibility = View.INVISIBLE
-                if(it.message.toString().contains("already in use")){
+                if (it.message.toString().contains("already in use")) {
                     email_register.setError("Esse e-mail já está sendo usado.")
-                }else
-                if(it.message.toString().contains("badly formatted")){
-                    email_register.setError("Insira um e-mail válido.")
-                }else
-                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-        }
+                } else
+                    if (it.message.toString().contains("badly formatted")) {
+                        email_register.setError("Insira um e-mail válido.")
+                    } else
+                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+            }
     }
 }

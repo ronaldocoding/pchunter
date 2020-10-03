@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.setupbuilder.model.Setup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FieldValue.serverTimestamp
@@ -23,7 +24,7 @@ class NewSetupActivity : AppCompatActivity() {
         setContentView(R.layout.new_setup_activity)
         val timestamp = Timestamp(System.currentTimeMillis())
         var sName = setup_name.text
-
+        val user = FirebaseAuth.getInstance().currentUser
         setup_button.setOnClickListener {
             if(sName.isEmpty()){
 
@@ -44,20 +45,24 @@ class NewSetupActivity : AppCompatActivity() {
                     }
 
                     if (!equal){
-                        var setup = Setup(
-                                sName.toString(), serverTimestamp()
-                        )
+                        var setup = user?.uid?.let { it1 ->
+                            Setup(
+                                sName.toString(), serverTimestamp(), it1
+                            )
+                        }
 
-                        setups
-                            .add(setup).addOnSuccessListener {
-                                Toast.makeText(this, "Adicionado.", Toast.LENGTH_LONG).show()
+                        if (setup != null) {
+                            setups
+                                .add(setup).addOnSuccessListener {
+                                    Toast.makeText(this, "Adicionado.", Toast.LENGTH_LONG).show()
 
-                                val intent = Intent(this, MenuActivity::class.java)
-                                intent.putExtra("SetupName", "1")
-                                startActivity(intent)
-                            }.addOnFailureListener {
-                                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                            }
+                                    val intent = Intent(this, MenuActivity::class.java)
+                                    intent.putExtra("SetupName", "1")
+                                    startActivity(intent)
+                                }.addOnFailureListener {
+                                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                                }
+                        }
                     }
                 }
 

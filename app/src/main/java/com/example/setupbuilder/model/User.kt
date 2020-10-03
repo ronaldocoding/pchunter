@@ -1,3 +1,3 @@
 package com.example.setupbuilder.model
 
-data class User(val uid:String, val name:String)
+data class User(val name:String)
