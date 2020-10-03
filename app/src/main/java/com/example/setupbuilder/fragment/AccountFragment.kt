@@ -2,18 +2,17 @@ package com.example.setupbuilder.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.setupbuilder.LoginActivity
 import com.example.setupbuilder.R
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.account_fragment.*
 
 class AccountFragment : Fragment() {
@@ -29,6 +28,7 @@ class AccountFragment : Fragment() {
         super.onStart()
         val user = FirebaseAuth.getInstance().currentUser
 //        Toast.makeText(context, user?.email, Toast.LENGTH_LONG).show()
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         sign_out.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -72,6 +72,7 @@ class AccountFragment : Fragment() {
         //Açao de deletar conta
         delete_button.setOnClickListener {
             //validar
+
             if(password_home_input.text.toString().isEmpty()){
                 password_home_input.setError("Campo vazio.")
                 return@setOnClickListener

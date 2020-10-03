@@ -8,96 +8,98 @@
     android:orientation="vertical"
     android:padding="30dp"
     tools:context=".RegisterActivity">
-    <ProgressBar
-        android:id="@+id/progressBarRegister"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="85dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="24dp"
-        android:visibility="invisible" />
-    <EditText
-        android:id="@+id/name_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:drawableStart="@drawable/custom_user_icon"
-        android:drawablePadding="10dp"
-        android:background="@drawable/round_light_input"
-        android:hint="Digite seu nome"
-        style="@style/CustomInput"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/email_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:drawableStart="@drawable/custom_email_light_icon"
-        android:drawablePadding="10dp"
-        style="@style/CustomInput"
-        android:layout_marginVertical="10dp"
-        android:hint="Digite seu e-mail"
-        android:background="@drawable/round_light_input"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        tools:layout_editor_absoluteY="61dp" />
+        <ProgressBar
+            android:id="@+id/progressBarRegister"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="85dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="24dp"
+            android:visibility="invisible" />
+        <EditText
+            android:id="@+id/name_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:drawableStart="@drawable/custom_user_icon"
+            android:drawablePadding="10dp"
+            android:background="@drawable/round_light_input"
+            android:hint="Digite seu nome"
+            style="@style/CustomInput"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/password_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:drawableStart="@drawable/custom_password_light_icon"
-        android:drawablePadding="10dp"
-        style="@style/CustomInput"
-        android:hint="Digite sua senha"
-        android:background="@drawable/round_light_input"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/email_register"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/email_register"
-        tools:layout_editor_absoluteY="121dp" />
+        <EditText
+            android:id="@+id/email_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:drawableStart="@drawable/custom_email_light_icon"
+            android:drawablePadding="10dp"
+            style="@style/CustomInput"
+            android:layout_marginVertical="10dp"
+            android:hint="Digite seu e-mail"
+            android:background="@drawable/round_light_input"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            tools:layout_editor_absoluteY="61dp" />
 
-    <EditText
-        android:id="@+id/password_register2"
-        style="@style/CustomInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_light_input"
-        android:drawableStart="@drawable/custom_password_light_icon"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:layout_marginVertical="10dp"
-        android:hint="Confirme sua senha"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/email_register"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/email_register"
-        tools:layout_editor_absoluteY="121dp" />
+        <EditText
+            android:id="@+id/password_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:drawableStart="@drawable/custom_password_light_icon"
+            android:drawablePadding="10dp"
+            style="@style/CustomInput"
+            android:hint="Digite sua senha"
+            android:background="@drawable/round_light_input"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/email_register"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/email_register"
+            tools:layout_editor_absoluteY="121dp" />
 
-    <Button
-        android:id="@+id/button_register"
-        style="@style/PrimaryButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/light_button"
-        android:shadowColor="#00FFFFFF"
-        android:text="Registrar"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="@+id/password_register"
-        app:layout_constraintStart_toStartOf="@+id/password_register"
-        app:layout_constraintTop_toBottomOf="@+id/password_register" />
+        <EditText
+            android:id="@+id/password_register2"
+            style="@style/CustomInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_light_input"
+            android:drawableStart="@drawable/custom_password_light_icon"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:layout_marginVertical="10dp"
+            android:hint="Confirme sua senha"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/email_register"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/email_register"
+            tools:layout_editor_absoluteY="121dp" />
 
-    <TextView
-        android:id="@+id/textLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@style/CustomText"
-        android:text="Já tem conta? Faça login." />
-</LinearLayout>
+        <Button
+            android:id="@+id/button_register"
+            style="@style/PrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/light_button"
+            android:shadowColor="#00FFFFFF"
+            android:text="Registrar"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/password_register"
+            app:layout_constraintStart_toStartOf="@+id/password_register"
+            app:layout_constraintTop_toBottomOf="@+id/password_register" />
+
+        <TextView
+            android:id="@+id/textLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/CustomText"
+            android:text="Já tem conta? Faça login." />
+
+    </LinearLayout>

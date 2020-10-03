@@ -25,7 +25,9 @@
             android:theme="@style/AppLightTheme" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".NewSetupActivity" />
+        <activity android:name=".ViewSetupActivity" />
         <activity android:name=".PasswordRecoveryActivity" />
+
     </application>
 
 </manifest>
