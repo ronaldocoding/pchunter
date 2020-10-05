@@ -79,34 +79,38 @@ class AccountFragment : Fragment() {
             //re-autenticar
             val credential = EmailAuthProvider
                 .getCredential(user?.email.toString(), password_home_input.text.toString())
-
-            context?.let { it1 ->
-                MaterialAlertDialogBuilder(it1)
-                    .setTitle("Exclusão de conta")
-                    .setMessage("Tem certeza que deseja excluir sua conta? Não será possível recuperar seus dados posteriormente.")
-                    .setNeutralButton("Não") { dialog, which ->
-                        // Respond to neutral button press
-                    }
-                    .setPositiveButton("Sim") { dialog, which ->
-                        user?.reauthenticate(credential)
-                            ?.addOnSuccessListener {
+            user?.reauthenticate(credential)
+                ?.addOnSuccessListener {
+                    context?.let { it1 ->
+                        MaterialAlertDialogBuilder(it1)
+                            .setTitle("Exclusão de conta")
+                            .setMessage("Tem certeza que deseja excluir sua conta? Não será possível recuperar seus dados posteriormente.")
+                            .setNeutralButton("Não") { dialog, which ->
+                                // Respond to neutral button press
+                            }
+                            .setPositiveButton("Sim") { dialog, which ->
+//
                                 //Se o login estiver correto
                                 user?.delete()
                                     ?.addOnCompleteListener { task ->
                                         if (task.isSuccessful) {
-                                            FirebaseFirestore.getInstance().collection("users")
+                                            FirebaseFirestore.getInstance()
+                                                .collection("users")
                                                 .document(user?.uid).get()
                                                 .addOnSuccessListener { document ->
-                                                    document.reference.delete().addOnSuccessListener {
-                                                        Toast.makeText(
-                                                            context,
-                                                            "Conta excluida",
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
-                                                    }
+                                                    document.reference.delete()
+                                                        .addOnSuccessListener {
+                                                            Toast.makeText(
+                                                                context,
+                                                                "Conta excluida",
+                                                                Toast.LENGTH_LONG
+                                                            ).show()
+                                                        }
                                                 }
-                                            FirebaseFirestore.getInstance().collection("setup")
-                                                .whereEqualTo("userUid", user?.uid).get()
+                                            FirebaseFirestore.getInstance()
+                                                .collection("setup")
+                                                .whereEqualTo("userUid", user?.uid)
+                                                .get()
                                                 .addOnSuccessListener { documents ->
                                                     for (document in documents) {
                                                         document.reference.delete()
@@ -122,20 +126,22 @@ class AccountFragment : Fragment() {
 //                                Toast.makeText(this, "Erro. Reautenticação necessária", Toast.LENGTH_LONG).show()
                                         }
                                     }
-                            }?.addOnFailureListener {
-                                if (it.message.toString().contains("password is invalid")) {
-                                    password_home_input.setError("Senha incorreta.")
-                                } else {
-//                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                                }
+
                             }
+                            .show()
+
                     }
-                    .show()
-            }
-
-
+                }?.addOnFailureListener {
+                    if (it.message.toString().contains("password is invalid")) {
+                        password_home_input.setError("Senha incorreta.")
+                    } else {
+                        Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                    }
+                }
         }
+
+
     }
-
-
 }
+
+

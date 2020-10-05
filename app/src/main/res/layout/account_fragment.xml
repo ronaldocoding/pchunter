@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,6 +11,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp">
+
+        <TextView
+            android:id="@+id/titleAccount"
+            style="@style/CustomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Minha conta"
+            android:textFontWeight="700"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/home_text1"
@@ -62,8 +73,8 @@
             style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Excluir conta" />
+            android:text="Excluir conta"
+            app:backgroundTint="@android:color/holo_red_dark" />
 
         <Button
             android:id="@+id/sign_out"
@@ -71,7 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:text="Sair" />
+            android:text="Sair"
+            app:backgroundTint="#2c2c2c" />
 
     </LinearLayout>
 </FrameLayout>

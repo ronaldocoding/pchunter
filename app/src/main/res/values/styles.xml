@@ -35,12 +35,10 @@
         <item name="android:textColorHint">#C4C4C3</item>
 
     </style>
-    <style name="PrimaryButton" parent="Widget.AppCompat.Button.Borderless">
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:background">@drawable/primary_button</item>
         <item name="android:fontFamily">@font/overpass_font_family</item>
         <item name="android:textSize">15dp</item>
-<!--        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>-->
-
     </style>
     <style name="CustomText">
         <item name="android:fontFamily">@font/poppins_regular</item>

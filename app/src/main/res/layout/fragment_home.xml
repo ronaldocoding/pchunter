@@ -3,12 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment">
+    tools:context=".fragment.HomeFragment"
+    android:padding="30dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-            <ListView android:id="@+id/lista" android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <TextView
+            style="@style/CustomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Meus Setups"
+            android:textFontWeight="700"
+            android:textSize="20sp" />
+            <ListView android:id="@+id/lista" android:layout_marginTop="30dp" android:layout_width="match_parent" android:layout_height="match_parent">
 
             </ListView>
     </RelativeLayout>
