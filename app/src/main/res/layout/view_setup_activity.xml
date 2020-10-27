@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-        android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="30dp">
-
-    <ProgressBar
-        android:id="@+id/pbEditSetup"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="85dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="24dp"
-        android:visibility="invisible" />
-    <TextView
-        android:id="@+id/setupName"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewComp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="wrap_content"/>
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/pbEditSetup"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:layout_width="85dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:visibility="invisible" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/setupName"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="TextView" />-->
 
 
-    <EditText
-        android:id="@+id/inputName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:visibility="gone"
-        android:focusedByDefault="true"
-        android:focusable="true"
-        android:defaultFocusHighlightEnabled="true"
-        style="@style/CustomInput"
-        android:focusableInTouchMode="true"
-        android:inputType="textPersonName"
-        android:text="Name" />
+<!--    <EditText-->
+<!--        android:id="@+id/inputName"-->
+<!--        style="@style/CustomInput"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:defaultFocusHighlightEnabled="true"-->
+<!--        android:ems="10"-->
+<!--        android:focusable="true"-->
+<!--        android:focusableInTouchMode="true"-->
+<!--        android:focusedByDefault="true"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:text="Name"-->
+<!--        android:visibility="gone" />-->
 
-    <Button
-            android:id="@+id/editName"
-            android:layout_height="wrap_content"
-            android:text="Editar nome"
-            android:layout_width="match_parent" />
+<!--    <Button-->
+<!--        android:id="@+id/editName"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Editar nome" />-->
 
-        <Button
-            android:id="@+id/deleteSetup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Excluir"/>
-            />
+<!--    <Button-->
+<!--        android:id="@+id/deleteSetup"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Excluir" />-->
 
 </LinearLayout>

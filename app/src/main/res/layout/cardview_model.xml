@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="40dp"
+    android:layout_marginVertical="15dp"
+    app:cardBackgroundColor="#2c2c2c"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:id="@+id/setupCard"
+        android:paddingVertical="15dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/round_square" />
+
+        <TextView
+            android:id="@+id/cardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome da peça"
+            style="@style/CustomText"
+            android:textColor="@android:color/white"
+
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/round_square">
+
+            <TextView
+                android:id="@+id/cardPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawable="@drawable/round_square"
+                android:padding="2dp"
+                android:textStyle="bold"
+                style="@style/CustomText"
+                android:text="R$ 00.00"
+                android:textColor="#2c2c2c"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/cardInfoOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:text="Informação 1"
+            style="@style/CustomText"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/cardInfoTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:text="Informação 2"
+            style="@style/CustomText"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

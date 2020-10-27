@@ -9,10 +9,11 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_blank"
-        android:checkable="false"
-        android:enabled="false"
-        android:title=" "
+        android:id="@+id/navigation_part"
+        android:checkable="true"
+        android:enabled="true"
+        android:icon="@drawable/custom_password_icon"
+        android:title=" Partes"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/navigation_account"

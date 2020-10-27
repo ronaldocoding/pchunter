@@ -10,17 +10,8 @@
             android:id="@+id/fl_wrapper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="55dp"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fab"
-            android:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/ic_baseline_add_24"
-            app:borderWidth="0dp"
-            app:layout_anchor="@id/bottomAppBar"
-            app:tint="@android:color/white" />
+            android:paddingBottom="40dp"
+            android:layout_marginBottom="19dp"/>
 
 
         <com.google.android.material.bottomappbar.BottomAppBar

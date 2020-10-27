@@ -9,84 +9,100 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.setupbuilder.adapters.ComponentRecyclerAdapter
+import com.example.setupbuilder.adapters.PartRecyclerAdapter
+import com.example.setupbuilder.adapters.SetupRecyclerAdapter
 import com.example.setupbuilder.fragment.HomeFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.account_fragment.*
 import kotlinx.android.synthetic.main.new_setup_activity.*
+import kotlinx.android.synthetic.main.part_fragment.*
 import kotlinx.android.synthetic.main.view_setup_activity.*
 
 class ViewSetupActivity : AppCompatActivity() {
-    @SuppressLint("NewApi")
+
+    private var layoutManager: RecyclerView.LayoutManager?=null
+    private var adapter: RecyclerView.Adapter<ComponentRecyclerAdapter.ViewHolder>?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_setup_activity)
-        setupName.setText(intent.getStringExtra("setupName"))
-        inputName.setText(intent.getStringExtra("setupName"))
 
-        inputName.setOnKeyListener(View.OnKeyListener { view, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-                pbEditSetup.visibility = View.VISIBLE
-                val setups = FirebaseFirestore.getInstance().collection("setup")
-                setups.get().addOnSuccessListener { documents ->
-                    var error = false
+        layoutManager = LinearLayoutManager(this)
+        recyclerViewComp.layoutManager = layoutManager
 
-                    if(inputName.text.toString().isEmpty()){
-                        inputName.setError("Esse campo não pode ficar vazio")
-                        error = true
-                        pbEditSetup.visibility = View.INVISIBLE
-                    }else {
-                        for(document in documents){
-                            if(document.data.get("name").toString().equals(inputName.text.toString()) &&
-                                !setupName.text.toString().equals(inputName.text.toString())){
-                                inputName.setError("Nome já existente")
-                                error = true
-                                pbEditSetup.visibility = View.INVISIBLE
-                            }
-                        }
-                    }
+        adapter = ComponentRecyclerAdapter()
+        recyclerViewComp.adapter = adapter
 
-                    if (!error){
-                        FirebaseFirestore.getInstance().collection("setup").whereEqualTo("name", intent.getStringExtra("setupName")).get()
-                            .addOnSuccessListener {documents ->
-                                for (document in documents) {
-                                    //Atualizar um campo
-                                    setupName.setText(inputName.text.toString())
-                                    document.reference.update("name", inputName.text.toString())
-                                    inputName.visibility = View.GONE
-                                    setupName.visibility = View.VISIBLE
-                                    pbEditSetup.visibility = View.INVISIBLE
-                                }
-                            }.addOnFailureListener {
-                                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                                pbEditSetup.visibility = View.INVISIBLE
-                            }
-                    }
-                }.addOnFailureListener {
-                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                        pbEditSetup.visibility = View.INVISIBLE
-                    }
-
-            }
-            false
-        })
-
-        editName.setOnClickListener {
-            inputName.visibility = View.VISIBLE
-            setupName.visibility = View.GONE
-        }
-        deleteSetup.setOnClickListener {
-            FirebaseFirestore.getInstance().collection("setup")
-                .whereEqualTo("name", intent.getStringExtra("setupName")).get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        document.reference.delete().addOnSuccessListener {
-                            startActivity(Intent(this, MenuActivity::class.java))
-                        }.addOnFailureListener {
-                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }
-        }
+//        setupName.setText(intent.getStringExtra("setupName"))
+//        inputName.setText(intent.getStringExtra("setupName"))
+//
+//        inputName.setOnKeyListener(View.OnKeyListener { view, keyCode, event ->
+//            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+//                pbEditSetup.visibility = View.VISIBLE
+//                val setups = FirebaseFirestore.getInstance().collection("setup")
+//                setups.get().addOnSuccessListener { documents ->
+//                    var error = false
+//
+//                    if(inputName.text.toString().isEmpty()){
+//                        inputName.setError("Esse campo não pode ficar vazio")
+//                        error = true
+//                        pbEditSetup.visibility = View.INVISIBLE
+//                    }else {
+//                        for(document in documents){
+//                            if(document.data.get("name").toString().equals(inputName.text.toString()) &&
+//                                !setupName.text.toString().equals(inputName.text.toString())){
+//                                inputName.setError("Nome já existente")
+//                                error = true
+//                                pbEditSetup.visibility = View.INVISIBLE
+//                            }
+//                        }
+//                    }
+//
+//                    if (!error){
+//                        FirebaseFirestore.getInstance().collection("setup").whereEqualTo("name", intent.getStringExtra("setupName")).get()
+//                            .addOnSuccessListener {documents ->
+//                                for (document in documents) {
+//                                    //Atualizar um campo
+//                                    setupName.setText(inputName.text.toString())
+//                                    document.reference.update("name", inputName.text.toString())
+//                                    inputName.visibility = View.GONE
+//                                    setupName.visibility = View.VISIBLE
+//                                    pbEditSetup.visibility = View.INVISIBLE
+//                                }
+//                            }.addOnFailureListener {
+//                                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+//                                pbEditSetup.visibility = View.INVISIBLE
+//                            }
+//                    }
+//                }.addOnFailureListener {
+//                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+//                        pbEditSetup.visibility = View.INVISIBLE
+//                    }
+//
+//            }
+//            false
+//        })
+//
+//        editName.setOnClickListener {
+//            inputName.visibility = View.VISIBLE
+//            setupName.visibility = View.GONE
+//        }
+//        deleteSetup.setOnClickListener {
+//            FirebaseFirestore.getInstance().collection("setup")
+//                .whereEqualTo("name", intent.getStringExtra("setupName")).get()
+//                .addOnSuccessListener { documents ->
+//                    for (document in documents) {
+//                        document.reference.delete().addOnSuccessListener {
+//                            startActivity(Intent(this, MenuActivity::class.java))
+//                        }.addOnFailureListener {
+//                            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+//                        }
+//                    }
+//                }
+//        }
     }
 }
 
