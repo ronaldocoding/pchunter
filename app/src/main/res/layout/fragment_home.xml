@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    tools:context=".fragment.HomeFragment"
     android:paddingHorizontal="30dp"
-    android:paddingTop="20dp">
+    android:paddingTop="20dp"
+    tools:context=".fragment.HomeFragment">
+
     <TextView
         style="@style/CustomText"
         android:layout_width="match_parent"
@@ -19,27 +20,27 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_height="match_parent" />
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp" />
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
 
-<!--   -->
+    <!--   -->
 
 
-<!--            <ListView android:id="@+id/lista" android:layout_marginTop="30dp" android:layout_width="match_parent" android:layout_height="match_parent">-->
+    <!--            <ListView android:id="@+id/lista" android:layout_marginTop="30dp" android:layout_width="match_parent" android:layout_height="match_parent">-->
 
-<!--            </ListView>-->
-<!--    </RelativeLayout>-->
+    <!--            </ListView>-->
+    <!--    </RelativeLayout>-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activateDialogButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fab"
+        android:layout_gravity="end|bottom"
         android:backgroundTint="@color/colorPrimary"
         android:src="@drawable/ic_baseline_add_24"
         app:borderWidth="0dp"
-        android:layout_gravity="end|bottom"
 
         app:tint="@android:color/white" />
 
