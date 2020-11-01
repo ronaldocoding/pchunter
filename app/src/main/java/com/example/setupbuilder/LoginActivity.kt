@@ -5,13 +5,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.setupbuilder.model.UserModel
+import com.example.setupbuilder.viewmodel.UserViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_activity.*
+
 
 class LoginActivity : AppCompatActivity () {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
+
 
         button_login.setOnClickListener {
             progressBar.visibility = View.VISIBLE
@@ -31,9 +37,10 @@ class LoginActivity : AppCompatActivity () {
     }
 
     private fun signIn(){
+
         val email = email_login.text.toString()
         val password = password_login.text.toString()
-
+        val vmUser = UserViewModel()
         if (email.isEmpty() || password.isEmpty()) {
             if(email.isEmpty())
                 email_login.setError("Esse campo não pode ficar vazio.")
@@ -42,29 +49,18 @@ class LoginActivity : AppCompatActivity () {
             progressBar.visibility = View.INVISIBLE
             return
         }
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                if (it.isSuccessful){
-                    progressBar.visibility = View.INVISIBLE
-                    val intent = Intent(this, MenuActivity::class.java)
-                    startActivity(intent)
-                }
 
-            }
-            .addOnFailureListener {
-                progressBar.visibility = View.INVISIBLE
-                if(it.message.toString().contains("password is invalid")){
-                    password_login.setError("Senha incorreta.")
-                }else
-                    if(it.message.toString().contains("There is no user")){
-                    email_login.setError("E-mail não cadastrado.")
-                    }else
-                        if(it.message.toString().contains("badly formatted")) {
-                            email_login.setError("E-mail inválido.")
-                        }else{
-                        Toast.makeText(this, "Ocorreu um erro inesperado. Tente novamente.", Toast.LENGTH_LONG).show()
-                    }
-            }
+        if(vmUser.SignIn(email_login, password_login, this)){
+            progressBar.visibility = View.INVISIBLE
+            val intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(this, "entrou aqui", Toast.LENGTH_LONG).show()
+            progressBar.visibility = View.INVISIBLE
+        }
 
     }
+
+
+
 }

@@ -27,6 +27,7 @@
         <activity android:name=".NewSetupActivity" />
         <activity android:name=".ViewSetupActivity" />
         <activity android:name=".PasswordRecoveryActivity" />
+        <activity android:name=".ViewPartActivity" />
 
     </application>
 

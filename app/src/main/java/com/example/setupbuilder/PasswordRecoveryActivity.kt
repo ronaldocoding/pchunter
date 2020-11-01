@@ -3,6 +3,7 @@ package com.example.setupbuilder
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.setupbuilder.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.recovery_activity.*
 
@@ -10,7 +11,7 @@ class PasswordRecoveryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recovery_activity)
-
+        val mUser = UserModel()
         send_email.setOnClickListener {
             var email = email_recovery.text.toString()
             if(email.isEmpty()){
@@ -18,7 +19,7 @@ class PasswordRecoveryActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            FirebaseAuth.getInstance().sendPasswordResetEmail(
+                mUser.changePassword(
                     email
                 ).addOnSuccessListener {
                     Toast.makeText(this, "E-mail de recuperação de senha enviado.", Toast.LENGTH_LONG).show()
