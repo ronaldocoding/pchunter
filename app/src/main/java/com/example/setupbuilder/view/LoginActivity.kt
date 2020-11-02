@@ -1,15 +1,13 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.setupbuilder.model.UserModel
+import com.example.setupbuilder.R
+import com.example.setupbuilder.model.Part
 import com.example.setupbuilder.viewmodel.UserViewModel
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_activity.*
 
 
@@ -17,6 +15,7 @@ class LoginActivity : AppCompatActivity () {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
+
 
 
         button_login.setOnClickListener {

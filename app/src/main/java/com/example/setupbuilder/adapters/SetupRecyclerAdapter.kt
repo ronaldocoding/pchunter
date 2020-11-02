@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
-import com.example.setupbuilder.ViewSetupActivity
+import com.example.setupbuilder.view.ViewSetupActivity
 
 
 class SetupRecyclerAdapter(val cardType: String?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {

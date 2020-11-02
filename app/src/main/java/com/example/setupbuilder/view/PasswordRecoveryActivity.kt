@@ -1,26 +1,25 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.setupbuilder.model.UserModel
-import com.google.firebase.auth.FirebaseAuth
+import com.example.setupbuilder.R
+import com.example.setupbuilder.controller.UserController
 import kotlinx.android.synthetic.main.recovery_activity.*
 
 class PasswordRecoveryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recovery_activity)
-        val mUser = UserModel()
+        val repository = UserController()
+
         send_email.setOnClickListener {
             var email = email_recovery.text.toString()
             if(email.isEmpty()){
                 email_recovery.setError("Esse campo não pode ficar vazio.")
                 return@setOnClickListener
             }
-
-                mUser.changePassword(
-                    email
+            repository.changePassword(email
                 ).addOnSuccessListener {
                     Toast.makeText(this, "E-mail de recuperação de senha enviado.", Toast.LENGTH_LONG).show()
                 }.addOnFailureListener{

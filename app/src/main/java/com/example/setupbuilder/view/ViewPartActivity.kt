@@ -1,17 +1,11 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.setupbuilder.adapters.PartRecyclerAdapter
-import com.example.setupbuilder.adapters.SetupRecyclerAdapter
+import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.TipsRecyclerAdapter
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_part_activity.*
 
 class ViewPartActivity: AppCompatActivity() {

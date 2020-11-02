@@ -3,15 +3,12 @@ package com.example.setupbuilder.viewmodel
 import android.content.Context
 import android.content.Intent
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import com.example.setupbuilder.MenuActivity
-import com.example.setupbuilder.model.UserModel
-import org.w3c.dom.Text
+import com.example.setupbuilder.controller.UserController
+import com.example.setupbuilder.view.MenuActivity
 
 class UserViewModel {
-    private var mUser = UserModel()
+    private var mUser = UserController()
     public fun SignIn(email:EditText, password:EditText, context:Context):Boolean{
 
         var result = false
@@ -25,6 +22,7 @@ class UserViewModel {
 
             }
             .addOnFailureListener {
+                /*
                 if(it.message.toString().contains("password is invalid")){
                     password.setError("Senha incorreta.")
                 }else
@@ -41,6 +39,8 @@ class UserViewModel {
                             ).show()
                         }
                 return@addOnFailureListener
+
+                 */
             }
         return result
     }

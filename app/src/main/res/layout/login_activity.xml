@@ -8,7 +8,7 @@
 
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".LoginActivity">
+    tools:context=".view.LoginActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
