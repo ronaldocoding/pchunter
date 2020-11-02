@@ -16,4 +16,5 @@ class SetupController {
         return setupFirebase.add(setup)
     }
 
+
 }
