@@ -47,7 +47,7 @@ class PartRecyclerAdapter() :  RecyclerView.Adapter<PartRecyclerAdapter.ViewHold
         holder.title.text = ItemTitles[position]
         holder.title.setOnClickListener {
             val intent = Intent(it.context, ViewPartActivity::class.java)
-            intent.putExtra("nome", ItemTitles[position])
+            intent.putExtra("id", position)
             it.context.startActivity(intent)
         }
     }
