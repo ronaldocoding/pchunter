@@ -14,5 +14,6 @@
         android:layout_height="wrap_content"
         android:text="Dica"
         android:drawablePadding="10dp"
+        style="@style/CustomText"
         android:drawableStart="@drawable/ic_baseline_fiber_manual_record_24"/>
 </LinearLayout>

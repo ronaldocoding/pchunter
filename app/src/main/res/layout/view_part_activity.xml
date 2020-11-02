@@ -39,7 +39,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        tools:src="@drawable/round_square" />
+        tools:src="@drawable/round_square"
+        android:src="@drawable/round_square"/>
 
     <TextView
         android:id="@+id/definition_text"

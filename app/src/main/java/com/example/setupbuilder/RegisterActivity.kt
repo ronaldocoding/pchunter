@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import com.example.setupbuilder.model.User
 import kotlinx.android.synthetic.main.register_activity.*
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 //import com.google.firebase.auth.FirebaseA
 
@@ -31,7 +29,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun createUser() {
         val email = email_register.text.toString()
-        val name = name_register.text.toString()
         val password = password_register.text.toString()
         var valid = true
 
@@ -42,8 +39,7 @@ class RegisterActivity : AppCompatActivity() {
                 email_register.setError("Esse campo não pode ficar vazio!")
             if (password.isEmpty())
                 password_register.setError("Esse campo não pode ficar vazio!")
-            if (name.isEmpty())
-                name_register.setError("Esse campo não pode ficar vazio!")
+
             valid = false
         }
 
@@ -57,12 +53,6 @@ class RegisterActivity : AppCompatActivity() {
             valid = false
         }
 
-        name.forEach {
-            if (!it.isLetter() && !it.isWhitespace()) {
-                valid = false
-                name_register.setError("Esse campo não permite números ou caracteres especiais")
-            }
-        }
 
         if (!valid) {
             progressBarRegister.visibility = View.INVISIBLE
@@ -73,11 +63,6 @@ class RegisterActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    var id = it.result?.user?.uid
-                    val user = User(name)
-                    FirebaseFirestore.getInstance().collection("users").document(id.toString())
-                        .set(user)
-
                     progressBarRegister.visibility = View.INVISIBLE
                     val intent = Intent(this, MenuActivity::class.java)
                     startActivity(intent)
