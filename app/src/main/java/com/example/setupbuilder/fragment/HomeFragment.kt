@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.SetupRecyclerAdapter
-import com.google.firebase.auth.FirebaseAuth
+import com.example.setupbuilder.model.UserModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.collections.ArrayList as Array
 
@@ -31,11 +30,25 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        layoutManager = LinearLayoutManager(context)
-        recyclerView.layoutManager = layoutManager
+        val mUser = UserModel()
+        var names = Array<String>()
 
-        adapter = SetupRecyclerAdapter("Setup")
-        recyclerView.adapter = adapter
+        FirebaseFirestore.getInstance().collection("setup").get().addOnSuccessListener {
+            documents->
+            for(document in documents){
+                val uid = document.get("userUid").toString()
+
+                if(uid.equals(mUser.getUID())){
+                    names.add(document.get("name").toString())
+                }
+            }
+            layoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager = layoutManager
+            adapter = SetupRecyclerAdapter(names)
+            recyclerView.adapter = adapter
+        }
+
+
 
     }
 

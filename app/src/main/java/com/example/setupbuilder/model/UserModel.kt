@@ -19,7 +19,7 @@ class UserModel {
         return User?.email
     }
     public fun getUID ():String?{
-        return User?.uid
+        return User?.uid.toString()
     }
 
     //splash screen
