@@ -2,9 +2,9 @@ package com.example.setupbuilder.model
 
 import java.util.*
 
-class PSU(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String,
+class PSU(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String, image:String,
           certification:String, wattage:String, formFactor:String, modular:String):
-    Part(name, id, price, releaseYear, brand, details){
+    Part(name, id, price, releaseYear, brand, details, image,){
 
     var certification: String = certification
         private set

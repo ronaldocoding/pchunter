@@ -1,8 +1,8 @@
 package com.example.setupbuilder.model
 
 open class Peripheral(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String,
-              connection: String, wirelees:String, type:String):
-    Part(name, id, price, releaseYear, brand, details){
+              connection: String, wirelees:String, type:String, image:String,):
+    Part(name, id, price, releaseYear, brand, details, image){
 
     var connection: String = connection
         protected set

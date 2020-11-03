@@ -1,9 +1,9 @@
 package com.example.setupbuilder.model
 import java.util.*
 
-class GPU(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String,
+class GPU(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String, image:String,
           shaderCount:String, model:String, architecture:String, VRAMSize:String, VRAMType:String):
-    Part(name, id, price, releaseYear, brand, details){
+    Part(name, id, price, releaseYear, brand, details, image){
 
     var shaderCount: String = shaderCount
         private set

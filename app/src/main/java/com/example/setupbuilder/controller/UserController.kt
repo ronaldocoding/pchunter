@@ -30,7 +30,6 @@ class UserController {
     }
 
     public fun isAuthenticated ():Boolean{
-        val part = Part("oi", "oi", 4.5f, "2019", "3030", "4");
 
         if (getUser() !== null) return true
         return false

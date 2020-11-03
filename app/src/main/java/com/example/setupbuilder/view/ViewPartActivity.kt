@@ -92,6 +92,9 @@ class ViewPartActivity: AppCompatActivity() {
 
         adapter = TipsRecyclerAdapter(tips[pos])
         tips_list.adapter = adapter
+
+        //val api = APIController()
+        //api.searchTerm("Mouse", this)
         
     }
 

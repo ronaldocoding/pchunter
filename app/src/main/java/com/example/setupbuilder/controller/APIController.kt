@@ -1,5 +1,6 @@
 package com.example.setupbuilder.controller
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.Toast
 import com.android.volley.Request
@@ -17,10 +18,12 @@ import org.json.JSONObject
 
 class APIController {
 
+    @SuppressLint("WrongConstant")
     public fun searchTerm (term: String, context:Context):String  {
         val queue = Volley.newRequestQueue(context)
-        val url = "https://api.rainforestapi.com/request?api_key=7287E35DB65F4D478562FEEAACFCEB22&type=search&amazon_domain=amazon.com.br&search_term="+term+"&sort_by=price_high_to_low"
 
+        val url =
+            "https://api.rainforestapi.com/request?api_key=7BD8CF5031B04EE3843065EA60BA56FA&type=search&amazon_domain=amazon.com&search_term=$term&sort_by=price_high_to_low"
         // Request a string response from the provided URL.
         val stringRequest = StringRequest(
             Request.Method.GET, url,
@@ -30,9 +33,16 @@ class APIController {
                 val obj1 = obj.get("search_results") as JSONArray;
                 for (x in 0 until obj1.length()) {
 
-                    var nome:String = obj1.getJSONObject(x).get("title").toString()
+                    try {
+                        var nome:String = obj1.getJSONObject(x).get("title").toString()
+                        var preco:Int = obj1.getJSONObject(x).getJSONObject("price").getInt("value");
+                        var image = obj1.getJSONObject(x).get("image").toString()
+                        produtos.add(Part(nome, "oi", preco.toFloat(), "2020", "opa", "teste", image))
+                        Toast.makeText(context, nome+preco, Toast.LENGTH_LONG).show()
+                    }
+                    catch (e: Exception){
 
-                    produtos.add(Part(nome, "oi", 4.5f, "2020", "opa", "teste"))
+                    }
 
                 }
                 //a partir daqui manipular o array arquivos
