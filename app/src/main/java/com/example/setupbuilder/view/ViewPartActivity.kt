@@ -1,11 +1,23 @@
 package com.example.setupbuilder.view
 
+import android.app.DownloadManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.TipsRecyclerAdapter
+import com.example.setupbuilder.controller.APIController
+import com.example.setupbuilder.model.Part
+import com.example.setupbuilder.model.Setup
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentReference
+import kotlinx.android.synthetic.main.new_setup_activity.*
 import kotlinx.android.synthetic.main.view_part_activity.*
 
 class ViewPartActivity : AppCompatActivity() {
@@ -164,5 +176,6 @@ class ViewPartActivity : AppCompatActivity() {
 
         imageView2.setImageResource(photos[pos])
     }
+
 
 }

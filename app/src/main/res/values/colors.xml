@@ -5,4 +5,5 @@
     <color name="darkBackground">#1C1B1A</color>
     <color name="colorAccent">#6701B7</color>
     <color name="secondaryColor">#2c2c2c</color>
+    <color name="write">#ffffff</color>
 </resources>

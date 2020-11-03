@@ -23,6 +23,7 @@ class ViewSetupActivity : AppCompatActivity() {
         adapter = ComponentRecyclerAdapter()
         recyclerViewComp.adapter = adapter
 
+
 //        setupName.setText(intent.getStringExtra("setupName"))
 //        inputName.setText(intent.getStringExtra("setupName"))
 //
