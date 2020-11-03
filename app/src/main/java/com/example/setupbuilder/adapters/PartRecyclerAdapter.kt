@@ -1,11 +1,13 @@
 package com.example.setupbuilder.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
+import com.example.setupbuilder.view.ViewPartActivity
 
 
 class PartRecyclerAdapter() :  RecyclerView.Adapter<PartRecyclerAdapter.ViewHolder>() {
@@ -29,10 +31,8 @@ class PartRecyclerAdapter() :  RecyclerView.Adapter<PartRecyclerAdapter.ViewHold
 
     inner class ViewHolder(ItemView:View) : RecyclerView.ViewHolder(ItemView) {
         var title : TextView
-        var desc : TextView
         init{
             title = itemView.findViewById(R.id.partTitle2)
-            desc = itemView.findViewById(R.id.partDesc)
         }
     }
 
@@ -44,6 +44,11 @@ class PartRecyclerAdapter() :  RecyclerView.Adapter<PartRecyclerAdapter.ViewHold
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = ItemTitles[position]
+        holder.title.setOnClickListener {
+            val intent = Intent(it.context, ViewPartActivity::class.java)
+            intent.putExtra("id", position)
+            it.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

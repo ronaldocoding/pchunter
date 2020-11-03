@@ -31,44 +31,12 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        var names = loadList()
         layoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = layoutManager
 
         adapter = SetupRecyclerAdapter("Setup")
         recyclerView.adapter = adapter
 
-//        lista.setOnItemClickListener { parent, view, position, id ->
-//            context?.let { it1 ->
-//                val intent = Intent(context, ViewSetupActivity::class.java)
-//                intent.putExtra("setupName", names.get(id.toInt()).toString())
-//                startActivity(intent)
-//
-//            }
-//        }
-
-
     }
-    fun loadList ():Array<String>{
 
-        val user = FirebaseAuth.getInstance().currentUser
-        val names = arrayListOf<String>()
-        var setupAdapter = context?.let { ArrayAdapter<String>(it, android.R.layout.simple_expandable_list_item_1) }
-//        lista.adapter = setupAdapter
-        setupAdapter?.clear()
-        FirebaseFirestore.getInstance().collection("setup")
-            .orderBy("timestamp", Query.Direction.ASCENDING).get()
-            .addOnSuccessListener {documents ->
-
-                for (document in documents) {
-                    val equal = user?.uid?.equals(document.data.get("userUid").toString())
-                    if(equal!!){
-                        names+= document.data.get("name").toString()
-                        setupAdapter?.add(document.data.get("name").toString())
-                    }
-
-                }
-            }
-        return names
-    }
 }

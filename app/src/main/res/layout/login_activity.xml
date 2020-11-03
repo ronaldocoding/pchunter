@@ -8,7 +8,7 @@
 
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context=".LoginActivity">
+    tools:context=".view.LoginActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -66,7 +66,6 @@
         app:layout_constraintEnd_toEndOf="@+id/password_login"
         app:layout_constraintStart_toStartOf="@+id/password_login"
         app:layout_constraintTop_toBottomOf="@+id/password_login" />
-
     <TextView
         android:id="@+id/register_link"
         android:layout_width="match_parent"

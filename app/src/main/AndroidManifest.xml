@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.setupbuilder">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,15 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.SettingsActivity" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".view.RegisterActivity"
             android:theme="@style/AppLightTheme" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".NewSetupActivity" />
-        <activity android:name=".ViewSetupActivity" />
-        <activity android:name=".PasswordRecoveryActivity" />
+        <activity android:name=".view.MenuActivity" />
+        <activity android:name=".view.NewSetupActivity" />
+        <activity android:name=".view.ViewSetupActivity" />
+        <activity android:name=".view.PasswordRecoveryActivity" />
+        <activity android:name=".view.ViewPartActivity" />
 
     </application>
 

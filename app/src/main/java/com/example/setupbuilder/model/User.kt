@@ -1,3 +1,8 @@
 package com.example.setupbuilder.model
 
-data class User(val name:String)
+
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FieldValue
+import java.time.LocalDateTime
+
+data class User(val email:String, val timestamp:FieldValue, val userUid:String, val password:String)

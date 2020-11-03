@@ -1,24 +1,11 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.View
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.ComponentRecyclerAdapter
-import com.example.setupbuilder.adapters.PartRecyclerAdapter
-import com.example.setupbuilder.adapters.SetupRecyclerAdapter
-import com.example.setupbuilder.fragment.HomeFragment
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.account_fragment.*
-import kotlinx.android.synthetic.main.new_setup_activity.*
-import kotlinx.android.synthetic.main.part_fragment.*
 import kotlinx.android.synthetic.main.view_setup_activity.*
 
 class ViewSetupActivity : AppCompatActivity() {
@@ -35,6 +22,7 @@ class ViewSetupActivity : AppCompatActivity() {
 
         adapter = ComponentRecyclerAdapter()
         recyclerViewComp.adapter = adapter
+
 
 //        setupName.setText(intent.getStringExtra("setupName"))
 //        inputName.setText(intent.getStringExtra("setupName"))

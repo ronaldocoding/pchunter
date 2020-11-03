@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.setupbuilder.LoginActivity
+import com.example.setupbuilder.view.LoginActivity
 import com.example.setupbuilder.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.account_fragment.*
 
 class AccountFragment : Fragment() {
@@ -37,37 +36,8 @@ class AccountFragment : Fragment() {
             startActivity(Intent(context, LoginActivity::class.java))
         }
 
-
-        FirebaseFirestore.getInstance().collection("users").document(user?.uid.toString()).get()
-            .addOnSuccessListener { document ->
-                home_text1?.setText("${document.data?.get("name")}")
-                name_home_input?.setText("${document.data?.get("name")}")
-
-            }
         home_text2.setText("${user?.email}")
 
-        //Editar nome
-        update_button.setOnClickListener {
-            if (name_home_input.text.toString().isEmpty()) {
-                name_home_input.setError("Campo vazio")
-                return@setOnClickListener
-            }
-
-            name_home_input.text.toString().forEach {
-                if (!it.isLetter() && !it.isWhitespace()) {
-                    name_home_input.setError("Esse campo não permite números ou caracteres especiais")
-                    return@setOnClickListener
-                }
-            }
-
-            FirebaseFirestore.getInstance().collection("users").document(user?.uid.toString()).get()
-                .addOnSuccessListener { document ->
-                    //Atualizar um campo
-                    home_text1.setText(name_home_input.text.toString())
-                    document.reference.update("name", name_home_input.text.toString())
-
-                }
-        }
         //Açao de deletar conta
         delete_button.setOnClickListener {
             //validar

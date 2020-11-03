@@ -1,17 +1,17 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
+import com.example.setupbuilder.controller.UserController
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var user = FirebaseAuth.getInstance().currentUser
+        val repository = UserController()
 
-        if(user != null) {
+        if(repository.isAuthenticated()) {
                     var intent = Intent(this, MenuActivity::class.java)
                     startActivity(intent)
                     finish()
