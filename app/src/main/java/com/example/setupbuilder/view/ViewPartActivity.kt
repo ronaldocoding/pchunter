@@ -1,6 +1,7 @@
 package com.example.setupbuilder.view
 
 import android.app.DownloadManager
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -171,6 +172,9 @@ class ViewPartActivity : AppCompatActivity() {
         tips_list.adapter = adapter
 
         imageView2.setImageResource(photos[pos])
+        partList.setOnClickListener {
+            startActivity(Intent(this, ListProductActivity::class.java))
+        }
     }
 
 

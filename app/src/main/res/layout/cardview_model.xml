@@ -20,6 +20,7 @@
         android:paddingVertical="15dp">
 
         <ImageView
+            android:id="@+id/setupImage"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_marginBottom="10dp"

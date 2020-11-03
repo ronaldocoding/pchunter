@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,14 +15,11 @@ import com.example.setupbuilder.adapters.SetupRecyclerAdapter
 import com.example.setupbuilder.controller.SetupController
 import com.example.setupbuilder.controller.UserController
 import com.example.setupbuilder.model.Setup
-import com.example.setupbuilder.view.MenuActivity
 import com.example.setupbuilder.view.ViewSetupActivity
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.dialog_with_edittext_setup_creation.*
 import kotlinx.android.synthetic.main.dialog_with_edittext_setup_creation.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.new_setup_activity.*
 import kotlin.collections.ArrayList as Array
 
 
@@ -68,7 +62,7 @@ class HomeFragment : Fragment() {
                 }
                 layoutManager = LinearLayoutManager(context)
                 recyclerView.layoutManager = layoutManager
-                adapter = SetupRecyclerAdapter(names)
+                adapter = SetupRecyclerAdapter(names, null, null)
                 recyclerView.adapter = adapter
             }
 

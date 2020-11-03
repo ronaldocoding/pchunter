@@ -1,17 +1,23 @@
 package com.example.setupbuilder.adapters
 
 import android.content.Intent
+import android.icu.number.NumberFormatter.with
+import android.icu.number.NumberRangeFormatter.with
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
+import com.example.setupbuilder.view.ListProductActivity
+import com.example.setupbuilder.view.ViewProductActivity
 import com.example.setupbuilder.view.ViewSetupActivity
+import com.squareup.picasso.Picasso
 
 
-class SetupRecyclerAdapter(val names: ArrayList<String>) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
+class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<Double>?, val urls:ArrayList<String>?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
     //Nome do Setup
     private val ItemTitles = arrayOf("Build barata", "Build cara")
 
@@ -20,12 +26,16 @@ class SetupRecyclerAdapter(val names: ArrayList<String>) :  RecyclerView.Adapter
         var infoOne : TextView
         var infoTwo : TextView
         var card : LinearLayout
+        var image : ImageView
+        var priceText : TextView
 
         init{
             title = itemView.findViewById(R.id.cardTitle)
             infoOne = itemView.findViewById(R.id.cardInfoOne)
             infoTwo = itemView.findViewById(R.id.cardInfoTwo)
             card = itemView.findViewById(R.id.setupCard)
+            image = itemView.findViewById(R.id.setupImage)
+            priceText=itemView.findViewById(R.id.cardPrice)
 
         }
     }
@@ -40,12 +50,29 @@ class SetupRecyclerAdapter(val names: ArrayList<String>) :  RecyclerView.Adapter
         holder.title.text = names.get(position)
         holder.infoOne.text = "CPU vazia"
         holder.infoTwo.text = "GPU vazia"
+        if(price!==null){
+            holder.image.visibility=View.VISIBLE
+            holder.infoOne.visibility=View.GONE
+            holder.priceText.text="R$ " + price.get(position).toString()
+            holder.infoTwo.visibility=View.GONE
+            holder.card.setOnClickListener {
+                val intent = Intent(it.context, ViewProductActivity::class.java)
+                intent.putExtra("name", names.get(position))
+                it.context.startActivity(intent)
+            }
 
-        holder.card.setOnClickListener {
-            val intent = Intent(it.context, ViewSetupActivity::class.java)
-            intent.putExtra("name", names.get(position))
-            it.context.startActivity(intent)
+            Picasso.get()
+                .load(urls?.get(position).toString())
+                .into(holder.image);
+        }else{
+            holder.card.setOnClickListener {
+                val intent = Intent(it.context, ViewSetupActivity::class.java)
+                intent.putExtra("name", names.get(position))
+                it.context.startActivity(intent)
+            }
         }
+
+
     }
 
     override fun getItemCount(): Int {
