@@ -1,4 +1,4 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,9 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
+import com.example.setupbuilder.R
+import com.example.setupbuilder.controller.UserController
 import kotlinx.android.synthetic.main.register_activity.*
-import com.google.firebase.auth.FirebaseAuth
 
 //import com.google.firebase.auth.FirebaseA
 
@@ -31,6 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         val email = email_register.text.toString()
         val password = password_register.text.toString()
         var valid = true
+        val repository = UserController()
 
         if (email.isEmpty() || password.isEmpty()) {
             Patterns.EMAIL_ADDRESS
@@ -59,8 +61,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+        repository.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     progressBarRegister.visibility = View.INVISIBLE

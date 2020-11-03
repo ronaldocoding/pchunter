@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.SetupRecyclerAdapter
-import com.example.setupbuilder.model.UserModel
+import com.example.setupbuilder.controller.UserController
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.collections.ArrayList as Array
@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val mUser = UserModel()
+        val mUser = UserController()
         var names = Array<String>()
 
         FirebaseFirestore.getInstance().collection("setup").get().addOnSuccessListener {

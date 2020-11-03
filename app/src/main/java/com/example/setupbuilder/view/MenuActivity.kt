@@ -1,20 +1,14 @@
-package com.example.setupbuilder
+package com.example.setupbuilder.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.setupbuilder.R
 import com.example.setupbuilder.fragment.AccountFragment
 import com.example.setupbuilder.fragment.HomeFragment
 import com.example.setupbuilder.fragment.PartFragment
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.account_fragment.*
 import kotlinx.android.synthetic.main.bottom_bar.*
-import kotlinx.android.synthetic.main.register_activity.*
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

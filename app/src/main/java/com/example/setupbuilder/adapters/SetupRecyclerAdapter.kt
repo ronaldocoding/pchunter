@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
-import com.example.setupbuilder.ViewSetupActivity
+import com.example.setupbuilder.view.ViewSetupActivity
 
 
 class SetupRecyclerAdapter(val names: ArrayList<String>) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {

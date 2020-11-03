@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,16 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.SettingsActivity" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".view.RegisterActivity"
             android:theme="@style/AppLightTheme" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".NewSetupActivity" />
-        <activity android:name=".ViewSetupActivity" />
-        <activity android:name=".PasswordRecoveryActivity" />
-        <activity android:name=".ViewPartActivity" />
+        <activity android:name=".view.MenuActivity" />
+        <activity android:name=".view.NewSetupActivity" />
+        <activity android:name=".view.ViewSetupActivity" />
+        <activity android:name=".view.PasswordRecoveryActivity" />
+        <activity android:name=".view.ViewPartActivity" />
 
     </application>
 

@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.setupbuilder.LoginActivity
+import com.example.setupbuilder.view.LoginActivity
 import com.example.setupbuilder.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.account_fragment.*
 
 class AccountFragment : Fragment() {
