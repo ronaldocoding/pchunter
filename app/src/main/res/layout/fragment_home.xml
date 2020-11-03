@@ -17,8 +17,25 @@
         android:textFontWeight="700"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/no_setup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:alpha="0.75"
+        android:visibility="gone"
+        android:text="Nenhum Setup criado.\nClique no + para criar."
+        android:layout_marginTop="50dp"
+        />
+    <ProgressBar
+        android:id="@+id/progressBarSetup"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="24dp" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp" />
@@ -34,7 +51,7 @@
     <!--            </ListView>-->
     <!--    </RelativeLayout>-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/activateDialogButton"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"

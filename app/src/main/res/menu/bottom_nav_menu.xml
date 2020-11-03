@@ -12,7 +12,7 @@
         android:id="@+id/navigation_part"
         android:checkable="true"
         android:enabled="true"
-        android:icon="@drawable/custom_password_icon"
+        android:icon="@drawable/ic_baseline_layers_24"
         android:title=" Partes"
         app:showAsAction="ifRoom" />
     <item

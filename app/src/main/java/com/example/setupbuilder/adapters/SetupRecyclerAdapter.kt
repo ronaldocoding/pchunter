@@ -43,6 +43,7 @@ class SetupRecyclerAdapter(val names: ArrayList<String>) :  RecyclerView.Adapter
 
         holder.card.setOnClickListener {
             val intent = Intent(it.context, ViewSetupActivity::class.java)
+            intent.putExtra("name", names.get(position))
             it.context.startActivity(intent)
         }
     }
