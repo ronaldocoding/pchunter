@@ -7,6 +7,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.setupbuilder.`interface`.Callback
 import com.example.setupbuilder.model.Part
 import com.example.setupbuilder.model.Setup
 import com.google.android.gms.tasks.Task
@@ -18,8 +19,8 @@ import org.json.JSONObject
 
 class APIController {
 
-    @SuppressLint("WrongConstant")
-    public fun searchTerm (term: String, context:Context):String  {
+    @SuppressLint("WrongConstant"s)
+    public fun searchTerm (term: String, context:Context, callback:Callback):String  {
         val queue = Volley.newRequestQueue(context)
 
         val url =
@@ -39,6 +40,7 @@ class APIController {
                         var image = obj1.getJSONObject(x).get("image").toString()
                         produtos.add(Part(nome, "oi", preco.toFloat(), "2020", "opa", "teste", image))
                         Toast.makeText(context, nome+preco, Toast.LENGTH_LONG).show()
+
                     }
                     catch (e: Exception){
 
@@ -47,10 +49,11 @@ class APIController {
                 }
                 //a partir daqui manipular o array arquivos
                 Toast.makeText(context, "Produtos carregados com sucesso", Toast.LENGTH_LONG).show()
-
+                callback.onRequestSuccess()
             },
             Response.ErrorListener {
-                Toast.makeText(context, "alguma coisa deu errado", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "alguma coisa deu errado api controller", Toast.LENGTH_LONG).show()
+                callback.onRequestError("opa")
             })
 
 

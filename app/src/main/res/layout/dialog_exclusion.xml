@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1c1b1a"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="30dp">
+
+    <TextView
+        android:id="@+id/exclusion_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/CustomText"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Exclusão de conta" />
+
+    <TextView
+        android:id="@+id/exclusion_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CustomText"
+        android:textAlignment="center"
+        android:text="Tem certeza que deseja excluir sua conta? Não será possível recuperar seus dados posteriormente."/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_dialog_exclusion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#2c2c2c"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/confirm_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excluir" />
+
+    </LinearLayout>
+
+</LinearLayout>

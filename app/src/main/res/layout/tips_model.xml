@@ -6,14 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="5dp"
-    android:layout_marginVertical="10dp">
-
+    android:layout_marginVertical="5dp"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_baseline_fiber_manual_record_24"/>
     <TextView
         android:id="@+id/tip_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Dica"
-        android:drawablePadding="10dp"
-        style="@style/CustomText"
-        android:drawableStart="@drawable/ic_baseline_fiber_manual_record_24"/>
+        android:paddingStart="10dp"
+        android:textSize="15sp"
+        style="@style/CustomText"/>
 </LinearLayout>

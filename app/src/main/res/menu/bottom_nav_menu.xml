@@ -7,14 +7,20 @@
         android:icon="@drawable/ic_outline_home_24"
         android:title="@string/title_home"
         app:showAsAction="ifRoom" />
-
     <item
         android:id="@+id/navigation_part"
-        android:checkable="true"
-        android:enabled="true"
-        android:icon="@drawable/custom_password_icon"
+        android:icon="@drawable/ic_baseline_layers_24"
         android:title=" Partes"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/benchmark_part"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:title="Benchmarks"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_outline_account_circle_24"

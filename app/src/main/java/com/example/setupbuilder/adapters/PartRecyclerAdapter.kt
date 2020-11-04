@@ -13,16 +13,17 @@ import com.example.setupbuilder.view.ViewPartActivity
 class PartRecyclerAdapter() :  RecyclerView.Adapter<PartRecyclerAdapter.ViewHolder>() {
     //Nome do componente
     private val ItemTitles = arrayOf(
-        "CPU",
-        "Placa-mãe",
-        "RAM",
-        "Placa de vídeo",
-        "Armazenamento",
-        "Cooler de CPU",
-        "Sistema Operacional",
+        "Processador (CPU)",
+        "Placa-mãe (Motherboard)",
+        "Memória de Acesso Aleatório (RAM)",
+        "Placa de vídeo(GPU)",
+        "Disco de Armazenamento (Storage)",
         "Monitor",
         "Teclado",
-        "Mouse"
+        "Mouse",
+        "Headset",
+        "Fonte de Alimentação (PSU)",
+        "Gabinete (Case)"
     )
     //Preço
     //Informação 1

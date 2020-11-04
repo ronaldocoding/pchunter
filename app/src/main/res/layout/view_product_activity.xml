@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/round_square"
+        android:background="@drawable/round_square"/>
+
+    <Button
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
+        android:text="Comprar"
+        android:onClick="getUrlFromIntent"
+        app:backgroundTint="@android:color/holo_green_dark" />
+
+    <Button
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_baseline_add_24"
+        android:text="Adicionar" />
+
+    <TextView
+        style="@style/CustomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Placa-Mãe Asus Prime B450M Gaming/BR"
+        android:textSize="23dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/label_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preço"
+        android:textSize="20dp"
+        style="@style/CustomText"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="2dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/round_square">
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawable="@drawable/round_square"
+            android:padding="2dp"
+            android:textStyle="bold"
+            style="@style/CustomText"
+            android:text="R$ 649.90"
+            android:textColor="#2c2c2c"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/CustomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Características:
+- Marca: ASUS
+- Modelo: Prime B450M Gaming/BR
+
+Especificações:
+
+Processadores:
+- AMD Socket AM4 AMD Ryzen 2ª Geração/ Ryzen com Radeon Vega Graphics/Ryzen 1ª Geração / Athlon Radeon Vega Graphics
+- TDP: 105W
+
+Chipset:
+- AMD B450
+Peso
+860 gramas (bruto com embalagem)"
+        android:textSize="15dp" />
+
+
+</LinearLayout>
+</ScrollView>

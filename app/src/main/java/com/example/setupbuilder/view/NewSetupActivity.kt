@@ -16,7 +16,6 @@ class NewSetupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.new_setup_activity)
-        val timestamp = Timestamp(System.currentTimeMillis())
         var sName = setup_name.text
         var user = UserController().getUser();
         var setups = SetupController()

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.setupbuilder.R
 import com.example.setupbuilder.fragment.AccountFragment
+import com.example.setupbuilder.fragment.BenchmarkFragment
 import com.example.setupbuilder.fragment.HomeFragment
 import com.example.setupbuilder.fragment.PartFragment
 import com.google.firebase.database.FirebaseDatabase
@@ -19,6 +20,7 @@ class MenuActivity : AppCompatActivity() {
 
         val homeFragment = HomeFragment()
         val accountFragment = AccountFragment()
+        val benchmarkFragment = BenchmarkFragment()
         val partFragment = PartFragment()
         makeCurrentFragment(homeFragment)
 
@@ -27,6 +29,7 @@ class MenuActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.navigation_home -> makeCurrentFragment(homeFragment)
                 R.id.navigation_account -> makeCurrentFragment(accountFragment)
+                R.id.benchmark_part -> makeCurrentFragment(benchmarkFragment)
                 R.id.navigation_part -> makeCurrentFragment(partFragment)
             }
 

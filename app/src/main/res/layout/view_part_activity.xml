@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    >
 
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="30dp"
+    android:focusableInTouchMode="true"
+    >
 
     <TextView
         android:id="@+id/compName"
@@ -16,10 +25,10 @@
         android:text="Componente"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <Button
+        android:id="@+id/partList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ver lista" />
@@ -39,8 +48,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        tools:src="@drawable/round_square"
-        android:src="@drawable/round_square"/>
+        android:src="@drawable/processador"/>
 
     <TextView
         android:id="@+id/definition_text"
@@ -55,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
+        android:paddingBottom="15dp"
         android:text="Dicas para comprar"
         android:textSize="20dp"
         android:layout_gravity="center"
@@ -64,6 +73,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tips_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        />
 
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>
