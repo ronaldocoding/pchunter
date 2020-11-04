@@ -1,9 +1,9 @@
 package com.example.setupbuilder.model
 import java.util.*
 
-class CPUcooler(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String,
+class CPUcooler(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String, image:String,
            noiseLevel: String, fanRPM:String, coolerType:String):
-    Part(name, id, price, releaseYear, brand, details){
+    Part(name, id, price, releaseYear, brand, details, image){
 
     var noiseLevel: String = noiseLevel
         private set

@@ -171,6 +171,7 @@ class ViewPartActivity : AppCompatActivity() {
         adapter = TipsRecyclerAdapter(tips[pos])
         tips_list.adapter = adapter
 
+
         imageView2.setImageResource(photos[pos])
         partList.setOnClickListener {
             startActivity(Intent(this, ListProductActivity::class.java))

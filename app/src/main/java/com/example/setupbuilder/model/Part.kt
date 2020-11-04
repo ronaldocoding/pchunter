@@ -4,7 +4,7 @@ import android.widget.Toast
 import android.widget.Toast.*
 
 
-open class Part(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String){
+open class Part(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String, image:String){
     var name: String = name
         protected set
     var id: String = id
@@ -17,7 +17,10 @@ open class Part(name: String, id: String, price: Float, releaseYear:String, bran
         protected set
     var details: String = details
         protected set
-
+    var image:String = image
     init {
+
     }
+
+
 }
