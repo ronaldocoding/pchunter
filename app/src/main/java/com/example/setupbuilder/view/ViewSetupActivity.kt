@@ -11,17 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.ComponentRecyclerAdapter
 import com.example.setupbuilder.controller.SetupController
-import com.example.setupbuilder.controller.UserController
-import com.example.setupbuilder.model.Setup
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.dialog_exclusion.view.*
 import kotlinx.android.synthetic.main.dialog_with_edittext_setup_creation.view.*
 import kotlinx.android.synthetic.main.dialog_with_edittext_setup_creation.view.text_dialog
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.view_setup_activity.*
-import kotlinx.android.synthetic.main.view_setup_activity.view.*
 
 class ViewSetupActivity : AppCompatActivity() {
 
@@ -60,7 +54,7 @@ class ViewSetupActivity : AppCompatActivity() {
                 } else {
 
                     var i = 0
-                    setups.listSetups().addOnSuccessListener { documents ->
+                    setups.listSetupsByTime("cresc").addOnSuccessListener { documents ->
                         var equal = false
 
                         for (document in documents) {
