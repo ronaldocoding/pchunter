@@ -30,6 +30,7 @@
         <activity android:name=".view.ViewPartActivity" />
         <activity android:name=".view.ListProductActivity" />
         <activity android:name=".view.ViewProductActivity" />
+        <activity android:name=".view.CpuBenchmarkActivity"/>
     </application>
 
 </manifest>
