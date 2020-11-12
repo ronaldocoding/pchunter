@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
         var i = 0
         setups.listSetupsByTime(order)
             .addOnSuccessListener { documents ->
-                progressBarSetup.visibility=View.GONE
+                progressBarSetup?.visibility=View.GONE
                 for (document in documents) {
                     val uid = document.get("userUid").toString()
 
@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
                 if(i===0){
                     no_setup.visibility=View.VISIBLE
                     recyclerView.visibility =View.GONE
+                    no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
                 }else{
                     no_setup.visibility=View.GONE
                     recyclerView.visibility =View.VISIBLE
@@ -77,6 +78,11 @@ class HomeFragment : Fragment() {
                 recyclerView.layoutManager = layoutManager
                 adapter = SetupRecyclerAdapter(names, null, null, names)
                 recyclerView.adapter = adapter
+            }.addOnFailureListener {
+                progressBarSetup.visibility=View.GONE
+                no_setup.visibility=View.VISIBLE
+                recyclerView.visibility =View.GONE
+                no_setup.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
             }
 
 
@@ -87,6 +93,7 @@ class HomeFragment : Fragment() {
                 .setView(mDialogView)
             //show dialog
             val  mAlertDialog = mBuilder.show()
+
 
             mDialogView.time_desc.setOnClickListener {
                 mAlertDialog.dismiss()
@@ -115,6 +122,7 @@ class HomeFragment : Fragment() {
 
             mDialogView.submit_dialog.setOnClickListener {
                 val dialogText = mDialogView.dialogEditText.text.toString()
+
 
                 if(dialogText.isEmpty()){
                     mDialogView.dialogEditText.setError("Este campo não pode ficar vazio")
