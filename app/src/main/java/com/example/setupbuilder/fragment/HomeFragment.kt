@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
                 }
                 layoutManager = LinearLayoutManager(context)
                 recyclerView.layoutManager = layoutManager
-                adapter = SetupRecyclerAdapter(names, null, null)
+                adapter = SetupRecyclerAdapter(names, null, null, names)
                 recyclerView.adapter = adapter
             }
 

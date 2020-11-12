@@ -13,5 +13,7 @@ class PartController {
     public fun listPartsByTerm(term: String): Task<QuerySnapshot> {
         return setupFirebase.whereEqualTo("produto", term).get()
     }
-
+    public fun listPartsByAsin(asin: String): Task<QuerySnapshot> {
+        return setupFirebase.whereEqualTo("asin", asin).get()
+    }
 }

@@ -20,22 +20,24 @@ class ListProductActivity: AppCompatActivity(){
 
         layoutManager = LinearLayoutManager(this)
         list_product.layoutManager = layoutManager
-        adapter = SetupRecyclerAdapter(arrayListOf(), arrayListOf(), arrayListOf())
+        adapter = SetupRecyclerAdapter(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
         list_product.adapter = adapter
         val controller = PartController()
         val nomes = ArrayList<String>()
         val precos = ArrayList<String>()
         val imgs = ArrayList<String>()
+        val id = ArrayList<String>()
         controller.listPartsByTerm(intent.getStringExtra("peca").toString()).addOnSuccessListener { response ->
 
             for(element in response){
                 nomes.add(element.data.get("nome").toString())
                 precos.add(element.data.get("preco").toString())
                 imgs.add(element.data.get("img").toString())
+                id.add(element.data.get("asin").toString())
             }
 
 
-            adapter = SetupRecyclerAdapter(nomes, precos, imgs)
+            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id)
             list_product.adapter = adapter
         }.addOnFailureListener {
             Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
