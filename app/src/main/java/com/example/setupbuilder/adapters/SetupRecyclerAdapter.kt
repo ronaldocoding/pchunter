@@ -17,7 +17,7 @@ import com.example.setupbuilder.view.ViewSetupActivity
 import com.squareup.picasso.Picasso
 
 
-class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<Double>?, val urls:ArrayList<String>?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
+class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<String>?, val urls:ArrayList<String>?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
     //Nome do Setup
     private val ItemTitles = arrayOf("Build barata", "Build cara")
 
@@ -53,7 +53,7 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<Do
         if(price!==null){
             holder.image.visibility=View.VISIBLE
             holder.infoOne.visibility=View.GONE
-            holder.priceText.text="R$ " + price.get(position).toString()
+            holder.priceText.text=price.get(position).toString()
             holder.infoTwo.visibility=View.GONE
             holder.card.setOnClickListener {
                 val intent = Intent(it.context, ViewProductActivity::class.java)
