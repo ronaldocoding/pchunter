@@ -17,7 +17,7 @@ import com.example.setupbuilder.view.ViewProductActivity
 import com.example.setupbuilder.view.ViewSetupActivity
 import com.squareup.picasso.Picasso
 
-class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<String>?, val urls:ArrayList<String>?, val ids:ArrayList<String>?,val setupName:String?, val search:String) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
+class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<String>?, val urls:ArrayList<String>?, val ids:ArrayList<String>?,val setupName:String?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
 
     //Nome do Setup
     private val ItemTitles = arrayOf("Build barata", "Build cara")

@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                 }
                 layoutManager = LinearLayoutManager(context)
                 recyclerView.layoutManager = layoutManager
-                adapter = SetupRecyclerAdapter(names, null, null, names, null, "")
+                adapter = SetupRecyclerAdapter(names, null, null, names, null,)
                 recyclerView.adapter = adapter
             }.addOnFailureListener {
                 progressBarSetup.visibility=View.GONE
