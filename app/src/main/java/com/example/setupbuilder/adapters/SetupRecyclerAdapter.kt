@@ -11,13 +11,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
+import com.example.setupbuilder.controller.SetupController
 import com.example.setupbuilder.view.ListProductActivity
 import com.example.setupbuilder.view.ViewProductActivity
 import com.example.setupbuilder.view.ViewSetupActivity
 import com.squareup.picasso.Picasso
 
 
-class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<String>?, val urls:ArrayList<String>?, val ids:ArrayList<String>?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
+class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<String>?, val urls:ArrayList<String>?, val ids:ArrayList<String>?, val setupName:String?) :  RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>() {
     //Nome do Setup
     private val ItemTitles = arrayOf("Build barata", "Build cara")
 
@@ -47,6 +48,9 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val setups = SetupController()
+        setups.getTotalPrice(names.get(position).toString(), holder.priceText)
+
         holder.title.text = names.get(position)
         holder.infoOne.text = "CPU vazia"
         holder.infoTwo.text = "GPU vazia"
@@ -59,6 +63,9 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
                 val intent = Intent(it.context, ViewProductActivity::class.java)
                 if (ids != null) {
                     intent.putExtra("name", ids.get(position))
+                }
+                if(setupName!= null){
+                    intent.putExtra("setup", setupName)
                 }
                 it.context.startActivity(intent)
             }
@@ -75,6 +82,8 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
                 it.context.startActivity(intent)
             }
         }
+
+
 
 
     }

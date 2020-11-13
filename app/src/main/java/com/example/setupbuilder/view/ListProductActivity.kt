@@ -20,13 +20,17 @@ class ListProductActivity: AppCompatActivity(){
 
         layoutManager = LinearLayoutManager(this)
         list_product.layoutManager = layoutManager
-        adapter = SetupRecyclerAdapter(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf())
+        adapter = SetupRecyclerAdapter(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), intent.getStringExtra("setup").toString())
         list_product.adapter = adapter
         val controller = PartController()
         val nomes = ArrayList<String>()
         val precos = ArrayList<String>()
         val imgs = ArrayList<String>()
         val id = ArrayList<String>()
+        var setup:String? = null
+        if(intent.getStringExtra("setup")!= null)
+            setup = intent.getStringExtra("setup")
+
         controller.listPartsByTerm(intent.getStringExtra("peca").toString()).addOnSuccessListener { response ->
 
             for(element in response){
@@ -37,11 +41,13 @@ class ListProductActivity: AppCompatActivity(){
             }
 
 
-            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id)
+            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id, setup)
             list_product.adapter = adapter
         }.addOnFailureListener {
             Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
         }
+
+
 
     }
 

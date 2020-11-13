@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.ComponentRecyclerAdapter
+import com.example.setupbuilder.controller.PartController
 import com.example.setupbuilder.controller.SetupController
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.dialog_exclusion.view.*
@@ -29,11 +30,15 @@ class ViewSetupActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         recyclerViewComp.layoutManager = layoutManager
 
-        adapter = ComponentRecyclerAdapter()
+        adapter = ComponentRecyclerAdapter(intent.getStringExtra("name").toString())
         recyclerViewComp.adapter = adapter
         var setups = SetupController()
 
+        setups.getTotalPrice(intent.getStringExtra("name").toString(), cardPrice_view)
+
+
         name.setText(intent.getStringExtra("name"))
+
         name.setOnClickListener {
             val mDialogView = LayoutInflater.from(this)
                 .inflate(R.layout.dialog_with_edittext_setup_creation, null)

@@ -1,16 +1,24 @@
 package com.example.setupbuilder.view
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.setupbuilder.R
 import com.example.setupbuilder.controller.PartController
+import com.example.setupbuilder.controller.SetupController
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.set_setup_dialog.*
+import kotlinx.android.synthetic.main.set_setup_dialog.view.*
 import kotlinx.android.synthetic.main.view_product_activity.*
+import kotlin.reflect.typeOf
 
 class ViewProductActivity: AppCompatActivity() {
     var url:String=""
@@ -20,7 +28,10 @@ class ViewProductActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_product_activity)
+        val cSetup = SetupController()
         val controller = PartController()
+
+
         controller.listPartsByAsin(intent.getStringExtra("name").toString()).addOnSuccessListener { response ->
             for (el in response){
                 url = el.data.get("url").toString()
@@ -31,13 +42,40 @@ class ViewProductActivity: AppCompatActivity() {
                 for(key in keys){
                     if(key != "img" && key != "url" && key != "preco" && key != "nome" && key != "produto") {
                         value = el.data.get(key).toString()
-                        infos += key + ": " + value + " - "
+                        infos += key + ": " + value + "\n"
                     }
                 }
                 caracteristicas.text = infos
                 Picasso.get()
                     .load( el.data.get("img").toString())
                     .into(product_image);
+                addPart.setOnClickListener {
+                    if(!intent.getStringExtra("setup").isNullOrBlank()){
+                        cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(), intent.getStringExtra("setup").toString(), this)
+                    }else{
+                        val mDialogView = LayoutInflater.from(this).inflate(R.layout.set_setup_dialog, null)
+                        //AlertDialogBuilder
+                        val mBuilder = AlertDialog.Builder(this)
+                            .setView(mDialogView)
+                        val  mAlertDialog = mBuilder.show()
+
+                        val adapter : ArrayAdapter<String> =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+
+                        mDialogView.setup_list.adapter = adapter
+
+                        cSetup.listSetupsByTime("cresc").addOnSuccessListener {
+                            documents->
+                                for(document in documents){
+                                    adapter.add(document.data.get("name").toString())
+                                }
+                        }
+
+                        mDialogView.setup_list.setOnItemClickListener { adapterView, view, i, l ->
+                            mAlertDialog.dismiss()
+                            cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(),adapter.getItem(i).toString(), this)
+                        }
+                    }
+                }
             }
 
         }

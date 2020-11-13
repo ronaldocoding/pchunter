@@ -28,6 +28,7 @@
         app:backgroundTint="@android:color/holo_green_dark" />
 
     <Button
+        android:id="@+id/addPart"
         style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,7 +81,5 @@
         android:id="@+id/caracteristicas"
         android:text=""
         android:textSize="15dp" />
-
-
 </LinearLayout>
 </ScrollView>
