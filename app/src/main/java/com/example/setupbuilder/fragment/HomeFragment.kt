@@ -18,9 +18,11 @@ import com.example.setupbuilder.controller.UserController
 import com.example.setupbuilder.model.Setup
 import com.example.setupbuilder.view.MenuActivity
 import com.example.setupbuilder.view.ViewSetupActivity
+import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.dialog_with_edittext_setup_creation.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.setup_filter_dialog.*
@@ -34,6 +36,7 @@ class HomeFragment : Fragment() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>? = null
 
+    val mUser = UserController()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,46 +47,86 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val mUser = UserController()
-        var names = Array<String>()
         var setups = SetupController()
         var order = "cresc"
         var filterBy = "time"
 
         try {
             order = activity?.intent?.getStringExtra("order").toString()
-            if(!activity?.intent?.getStringExtra("filterBy").isNullOrBlank()){
+            if (!activity?.intent?.getStringExtra("filterBy").isNullOrBlank()) {
                 filterBy = activity?.intent?.getStringExtra("filterBy").toString()
             }
         } catch (e: Exception) {
         }
+//        var i = 0
 
-        var i = 0
+//        if (filterBy.contains("time")) {
+//            setups.listSetupsByTime(order)
+//                .addOnSuccessListener { documents ->
+//                    progressBarSetup?.visibility = View.GONE
+//                    for (document in documents) {
+//                        val uid = document.get("userUid").toString()
+//
+//                        if (uid.equals(mUser.getUID())) {
+//                            names.add(document.get("name").toString())
+//                        }
+//                        i++
+//                    }
+//                    if (i === 0) {
+//                        no_setup.visibility = View.VISIBLE
+//                        recyclerView.visibility = View.GONE
+//                        no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
+//                    } else {
+//                        no_setup?.visibility = View.GONE
+//                        recyclerView?.visibility = View.VISIBLE
+//                    }
+//                    layoutManager = LinearLayoutManager(context)
+//                    recyclerView?.layoutManager = layoutManager
+//                    adapter = SetupRecyclerAdapter(names, null, null, names, null)
+//                    recyclerView?.adapter = adapter
+//                }.addOnFailureListener {
+//                    progressBarSetup?.visibility = View.GONE
+//                    no_setup?.visibility = View.VISIBLE
+//                    recyclerView?.visibility = View.GONE
+//                    no_setup?.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
+//                }
+//        } else {
+//            setups.listSetupsByPrice(order)
+//                .addOnSuccessListener { documents ->
+//                    progressBarSetup?.visibility = View.GONE
+//                    for (document in documents) {
+//                        val uid = document.get("userUid").toString()
+//
+//                        if (uid.equals(mUser.getUID())) {
+//                            names.add(document.get("name").toString())
+//                        }
+//                        i++
+//                    }
+//                    if (i === 0) {
+//                        no_setup.visibility = View.VISIBLE
+//                        recyclerView.visibility = View.GONE
+//                        no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
+//                    } else {
+//                        no_setup?.visibility = View.GONE
+//                        recyclerView?.visibility = View.VISIBLE
+//                    }
+//                    layoutManager = LinearLayoutManager(context)
+//                    recyclerView?.layoutManager = layoutManager
+//                    adapter = SetupRecyclerAdapter(names, null, null, names, null)
+//                    recyclerView?.adapter = adapter
+//                }.addOnFailureListener {
+//                    progressBarSetup?.visibility = View.GONE
+//                    no_setup?.visibility = View.VISIBLE
+//                    recyclerView?.visibility = View.GONE
+//                    no_setup?.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
+//                }
+//        }
 
-        if (filterBy.contains("time")) {
+
+        if (filterBy == "time") {
             setups.listSetupsByTime(order)
                 .addOnSuccessListener { documents ->
-                    progressBarSetup?.visibility = View.GONE
-                    for (document in documents) {
-                        val uid = document.get("userUid").toString()
-
-                        if (uid.equals(mUser.getUID())) {
-                            names.add(document.get("name").toString())
-                        }
-                        i++
-                    }
-                    if (i === 0) {
-                        no_setup.visibility = View.VISIBLE
-                        recyclerView.visibility = View.GONE
-                        no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
-                    } else {
-                        no_setup?.visibility = View.GONE
-                        recyclerView?.visibility = View.VISIBLE
-                    }
-                    layoutManager = LinearLayoutManager(context)
-                    recyclerView?.layoutManager = layoutManager
-                    adapter = SetupRecyclerAdapter(names, null, null, names, null)
-                    recyclerView?.adapter = adapter
+                    setSetups(documents)
                 }.addOnFailureListener {
                     progressBarSetup?.visibility = View.GONE
                     no_setup?.visibility = View.VISIBLE
@@ -93,27 +136,7 @@ class HomeFragment : Fragment() {
         } else {
             setups.listSetupsByPrice(order)
                 .addOnSuccessListener { documents ->
-                    progressBarSetup?.visibility = View.GONE
-                    for (document in documents) {
-                        val uid = document.get("userUid").toString()
-
-                        if (uid.equals(mUser.getUID())) {
-                            names.add(document.get("name").toString())
-                        }
-                        i++
-                    }
-                    if (i === 0) {
-                        no_setup.visibility = View.VISIBLE
-                        recyclerView.visibility = View.GONE
-                        no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
-                    } else {
-                        no_setup?.visibility = View.GONE
-                        recyclerView?.visibility = View.VISIBLE
-                    }
-                    layoutManager = LinearLayoutManager(context)
-                    recyclerView?.layoutManager = layoutManager
-                    adapter = SetupRecyclerAdapter(names, null, null, names, null)
-                    recyclerView?.adapter = adapter
+                    setSetups(documents)
                 }.addOnFailureListener {
                     progressBarSetup?.visibility = View.GONE
                     no_setup?.visibility = View.VISIBLE
@@ -121,7 +144,6 @@ class HomeFragment : Fragment() {
                     no_setup?.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
                 }
         }
-
 
 
         setup_filter.setOnClickListener {
@@ -163,6 +185,7 @@ class HomeFragment : Fragment() {
                 intent.putExtra("filterBy", "price")
                 intent.putExtra("order", "desc")
                 startActivity(intent);
+
             }
         }
         fab.setOnClickListener {
@@ -199,18 +222,20 @@ class HomeFragment : Fragment() {
                             mAlertDialog.dismiss()
                             var setup = user?.uid?.let { it1 ->
                                 Setup(
-                                    dialogText, FieldValue.serverTimestamp(), it1
+                                    dialogText, FieldValue.serverTimestamp(), it1, 0.0
                                 )
                             }
 
                             if (setup != null) {
                                 setups.add(setup).addOnSuccessListener {
-                                    Toast.makeText(context, "Adicionado.", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(context, "Adicionado.", Toast.LENGTH_LONG)
+                                        .show()
                                     val intent = Intent(context, ViewSetupActivity::class.java)
                                     intent.putExtra("name", "${dialogText}")
                                     startActivity(intent)
                                 }.addOnFailureListener {
-                                    Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                                    Toast.makeText(context, it.message, Toast.LENGTH_LONG)
+                                        .show()
                                 }
                             }
                         }
@@ -224,6 +249,37 @@ class HomeFragment : Fragment() {
         }
 
 
+    }
+
+    public fun setSetups(documents: QuerySnapshot?) {
+        var i = 0
+
+        var names = Array<String>()
+
+        progressBarSetup?.visibility = View.GONE
+        if (documents != null) {
+            for (document in documents) {
+                val uid = document.get("userUid").toString()
+
+                if (uid.equals(mUser.getUID())) {
+                    names.add(document.get("name").toString())
+                }
+                i++
+            }
+        }
+        if (i === 0) {
+            no_setup.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+            no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
+        } else {
+            no_setup.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
+
+        layoutManager = LinearLayoutManager(context)
+        recyclerView?.layoutManager = layoutManager
+        adapter = SetupRecyclerAdapter(names, null, null, names, null)
+        recyclerView?.adapter = adapter
     }
 
 }

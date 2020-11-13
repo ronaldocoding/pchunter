@@ -34,9 +34,11 @@ class ViewSetupActivity : AppCompatActivity() {
         recyclerViewComp.adapter = adapter
         var setups = SetupController()
 
-        setups.getTotalPrice(intent.getStringExtra("name").toString(), cardPrice_view)
-
-
+        setups.getByName(intent.getStringExtra("name").toString()).addOnSuccessListener { response ->
+            for (r in response){
+                cardPrice_view.text = "R$ "+r.data.get("preco").toString()
+            }
+        }
         name.setText(intent.getStringExtra("name"))
 
         name.setOnClickListener {
