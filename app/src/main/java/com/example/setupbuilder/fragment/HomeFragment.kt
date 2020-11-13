@@ -48,51 +48,90 @@ class HomeFragment : Fragment() {
         var names = Array<String>()
         var setups = SetupController()
         var order = "cresc"
-        var filterBy ="time"
-        try{
+        var filterBy = "time"
+
+        try {
             order = activity?.intent?.getStringExtra("order").toString()
-            filterBy = activity?.intent?.getStringExtra("filterBy").toString()
-        }catch (e:Exception){}
+            if(!activity?.intent?.getStringExtra("filterBy").isNullOrBlank()){
+                filterBy = activity?.intent?.getStringExtra("filterBy").toString()
+            }
+        } catch (e: Exception) {
+        }
 
         var i = 0
-        setups.listSetupsByTime(order)
-            .addOnSuccessListener { documents ->
-                progressBarSetup?.visibility=View.GONE
-                for (document in documents) {
-                    val uid = document.get("userUid").toString()
 
-                    if (uid.equals(mUser.getUID())) {
-                        names.add(document.get("name").toString())
+        if (filterBy.contains("time")) {
+            setups.listSetupsByTime(order)
+                .addOnSuccessListener { documents ->
+                    progressBarSetup?.visibility = View.GONE
+                    for (document in documents) {
+                        val uid = document.get("userUid").toString()
+
+                        if (uid.equals(mUser.getUID())) {
+                            names.add(document.get("name").toString())
+                        }
+                        i++
                     }
-                    i++
+                    if (i === 0) {
+                        no_setup.visibility = View.VISIBLE
+                        recyclerView.visibility = View.GONE
+                        no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
+                    } else {
+                        no_setup?.visibility = View.GONE
+                        recyclerView?.visibility = View.VISIBLE
+                    }
+                    layoutManager = LinearLayoutManager(context)
+                    recyclerView?.layoutManager = layoutManager
+                    adapter = SetupRecyclerAdapter(names, null, null, names, null)
+                    recyclerView?.adapter = adapter
+                }.addOnFailureListener {
+                    progressBarSetup?.visibility = View.GONE
+                    no_setup?.visibility = View.VISIBLE
+                    recyclerView?.visibility = View.GONE
+                    no_setup?.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
                 }
-                if(i===0){
-                    no_setup.visibility=View.VISIBLE
-                    recyclerView.visibility =View.GONE
-                    no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
-                }else{
-                    no_setup.visibility=View.GONE
-                    recyclerView.visibility =View.VISIBLE
+        } else {
+            setups.listSetupsByPrice(order)
+                .addOnSuccessListener { documents ->
+                    progressBarSetup?.visibility = View.GONE
+                    for (document in documents) {
+                        val uid = document.get("userUid").toString()
+
+                        if (uid.equals(mUser.getUID())) {
+                            names.add(document.get("name").toString())
+                        }
+                        i++
+                    }
+                    if (i === 0) {
+                        no_setup.visibility = View.VISIBLE
+                        recyclerView.visibility = View.GONE
+                        no_setup.setText("Nenhum Setup criado.\nClique no + para criar.")
+                    } else {
+                        no_setup?.visibility = View.GONE
+                        recyclerView?.visibility = View.VISIBLE
+                    }
+                    layoutManager = LinearLayoutManager(context)
+                    recyclerView?.layoutManager = layoutManager
+                    adapter = SetupRecyclerAdapter(names, null, null, names, null)
+                    recyclerView?.adapter = adapter
+                }.addOnFailureListener {
+                    progressBarSetup?.visibility = View.GONE
+                    no_setup?.visibility = View.VISIBLE
+                    recyclerView?.visibility = View.GONE
+                    no_setup?.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
                 }
-                layoutManager = LinearLayoutManager(context)
-                recyclerView.layoutManager = layoutManager
-                adapter = SetupRecyclerAdapter(names, null, null, names, null,)
-                recyclerView.adapter = adapter
-            }.addOnFailureListener {
-                progressBarSetup.visibility=View.GONE
-                no_setup.visibility=View.VISIBLE
-                recyclerView.visibility =View.GONE
-                no_setup.setText("Ocorreu um erro, mas não se preocupe, não é culpa sua.\nTente novamente mais tarde.")
-            }
+        }
+
 
 
         setup_filter.setOnClickListener {
-            val mDialogView = LayoutInflater.from(context).inflate(R.layout.setup_filter_dialog, null)
+            val mDialogView =
+                LayoutInflater.from(context).inflate(R.layout.setup_filter_dialog, null)
             //AlertDialogBuilder
             val mBuilder = AlertDialog.Builder(context)
                 .setView(mDialogView)
             //show dialog
-            val  mAlertDialog = mBuilder.show()
+            val mAlertDialog = mBuilder.show()
 
 
             mDialogView.time_desc.setOnClickListener {
@@ -110,37 +149,53 @@ class HomeFragment : Fragment() {
                 intent.putExtra("order", "cresc")
                 startActivity(intent);
             }
+            mDialogView.price_cresc.setOnClickListener {
+                mAlertDialog.dismiss()
+                val intent = Intent(context, MenuActivity::class.java)
+                intent.putExtra("filterBy", "price")
+                intent.putExtra("order", "cresc")
+                startActivity(intent);
+            }
+
+            mDialogView.price_desc.setOnClickListener {
+                mAlertDialog.dismiss()
+                val intent = Intent(context, MenuActivity::class.java)
+                intent.putExtra("filterBy", "price")
+                intent.putExtra("order", "desc")
+                startActivity(intent);
+            }
         }
         fab.setOnClickListener {
-            val mDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_with_edittext_setup_creation, null)
+            val mDialogView = LayoutInflater.from(context)
+                .inflate(R.layout.dialog_with_edittext_setup_creation, null)
             //AlertDialogBuilder
             val mBuilder = AlertDialog.Builder(context)
                 .setView(mDialogView)
             //show dialog
-            val  mAlertDialog = mBuilder.show()
+            val mAlertDialog = mBuilder.show()
             var user = UserController().getUser();
 
             mDialogView.submit_dialog.setOnClickListener {
                 val dialogText = mDialogView.dialogEditText.text.toString()
 
 
-                if(dialogText.isEmpty()){
+                if (dialogText.isEmpty()) {
                     mDialogView.dialogEditText.setError("Este campo não pode ficar vazio")
-                }else{
+                } else {
 
                     var i = 0
                     setups.listSetupsByTime(order).addOnSuccessListener { documents ->
                         var equal = false
 
-                        for(document in documents){
-                            if(document.data.get("name").toString().equals(dialogText)){
+                        for (document in documents) {
+                            if (document.data.get("name").toString().equals(dialogText)) {
                                 mDialogView.dialogEditText.setError("Nome já existente")
                                 equal = true
                             }
                             i++
                         }
 
-                        if (!equal){
+                        if (!equal) {
                             mAlertDialog.dismiss()
                             var setup = user?.uid?.let { it1 ->
                                 Setup(

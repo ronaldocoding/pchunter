@@ -20,6 +20,13 @@ class SetupController {
         return setupFirebase.whereEqualTo("userUid", userUid.toString()).orderBy("timestamp", dir).get()
     }
 
+    public fun listSetupsByPrice(order: String): Task<QuerySnapshot> {
+        var dir = Query.Direction.ASCENDING
+        if(order.equals("desc"))
+            dir = Query.Direction.DESCENDING
+        return setupFirebase.whereEqualTo("userUid", userUid.toString()).orderBy("preco", dir).get()
+    }
+
     public fun add(setup: Setup): Task<DocumentReference> {
 
         return setupFirebase.add(setup)
