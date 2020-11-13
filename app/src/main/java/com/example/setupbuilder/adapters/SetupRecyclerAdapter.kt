@@ -49,7 +49,11 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val setups = SetupController()
-        setups.getTotalPrice(names.get(position).toString(), holder.priceText)
+        setups.getByName(names.get(position).toString()).addOnSuccessListener { response ->
+            for (r in response){
+                holder.priceText.text = "R$ "+r.data.get("preco").toString()
+            }
+        }
 
         holder.title.text = names.get(position)
         holder.infoOne.text = "CPU vazia"
@@ -77,6 +81,7 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
             holder.card.setOnClickListener {
                 val intent = Intent(it.context, ViewSetupActivity::class.java)
                 if (ids != null) {
+
                     intent.putExtra("name", ids.get(position))
                 }
                 it.context.startActivity(intent)

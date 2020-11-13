@@ -39,7 +39,7 @@ class NewSetupActivity : AppCompatActivity() {
                     if (!equal){
                         var setup = user?.uid?.let { it1 ->
                             Setup(
-                                sName.toString(), serverTimestamp(), it1
+                                sName.toString(), serverTimestamp(), it1, 0.0
                             )
                         }
 

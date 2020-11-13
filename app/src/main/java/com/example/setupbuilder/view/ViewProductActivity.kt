@@ -51,7 +51,7 @@ class ViewProductActivity: AppCompatActivity() {
                     .into(product_image);
                 addPart.setOnClickListener {
                     if(!intent.getStringExtra("setup").isNullOrBlank()){
-                        cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(), intent.getStringExtra("setup").toString(), this)
+                        cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(),el.get("preco") as Double ,intent.getStringExtra("setup").toString(), this)
                     }else{
                         val mDialogView = LayoutInflater.from(this).inflate(R.layout.set_setup_dialog, null)
                         //AlertDialogBuilder
@@ -72,7 +72,7 @@ class ViewProductActivity: AppCompatActivity() {
 
                         mDialogView.setup_list.setOnItemClickListener { adapterView, view, i, l ->
                             mAlertDialog.dismiss()
-                            cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(),adapter.getItem(i).toString(), this)
+                            cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(),el.get("preco") as Double, adapter.getItem(i).toString(), this)
                         }
                     }
                 }
