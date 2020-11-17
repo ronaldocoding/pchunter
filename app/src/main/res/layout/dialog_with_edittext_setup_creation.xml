@@ -15,7 +15,7 @@
         style="@style/CustomText"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:text="Crie uma build" />
+        android:text="Crie um Setup" />
 
     <EditText
         android:id="@+id/dialogEditText"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="Nome da build">
+        android:hint="Nome do Setup">
 
         <requestFocus />
 

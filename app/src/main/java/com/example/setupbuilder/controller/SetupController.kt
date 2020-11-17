@@ -16,13 +16,15 @@ class SetupController {
 
     public fun listSetupsByTime(order: String): Task<QuerySnapshot> {
         var dir = Query.Direction.ASCENDING
-        if(order.equals("desc"))
+        if (order.equals("desc"))
             dir = Query.Direction.DESCENDING
-        return setupFirebase.whereEqualTo("userUid", userUid.toString()).orderBy("timestamp", dir).get()
+        return setupFirebase.whereEqualTo("userUid", userUid.toString()).orderBy("timestamp", dir)
+            .get()
     }
+
     public fun listSetupsByPrice(order: String): Task<QuerySnapshot> {
         var dir = Query.Direction.ASCENDING
-        if(order.equals("desc"))
+        if (order.equals("desc"))
             dir = Query.Direction.DESCENDING
         return setupFirebase.whereEqualTo("userUid", userUid.toString()).orderBy("preco", dir).get()
     }
@@ -31,29 +33,35 @@ class SetupController {
         return setupFirebase.add(setup)
     }
 
-    public fun addPart(partName:String, asin:String, precoNew:Double, setupName:String, context: Context){
+    public fun addPart(
+        partName: String,
+        asin: String,
+        precoNew: Double,
+        setupName: String,
+        context: Context
+    ) {
         val data = hashMapOf(partName to asin, "preco" to 0.0)
         var preco = 0.0
         var total = 0.0
-        listSetupsByTime("cresc").addOnSuccessListener {
-            documents->
-            for(document in documents){
+        listSetupsByTime("cresc").addOnSuccessListener { documents ->
+            for (document in documents) {
                 //verifica o nome do setup
-                if(document.data.get("name")?.equals(setupName)!!){
+                if (document.data.get("name")?.equals(setupName)!!) {
                     //atualiza passando um objeto {peça:id}"
 
                     total = document.data.get("preco") as Double
 
-                    if(document.data.get(partName) != null){
-                        partController.listPartsByAsin(document.data.get(partName).toString()).addOnSuccessListener { response ->
-                            for (r in response){
-                                preco = r.data.get("preco") as Double
+                    if (document.data.get(partName) != null) {
+                        partController.listPartsByAsin(document.data.get(partName).toString())
+                            .addOnSuccessListener { response ->
+                                for (r in response) {
+                                    preco = r.data.get("preco") as Double
 
+                                }
                             }
-                        }
                     }
 
-                    data.put("preco", total-preco+precoNew)
+                    data.put("preco", total - preco + precoNew)
                     document.reference.set(data, SetOptions.merge()).addOnSuccessListener {
                         val intent = Intent(context, ViewSetupActivity::class.java)
                         intent.putExtra("name", setupName)
@@ -65,15 +73,15 @@ class SetupController {
 
 
     }
-    public fun deletePart(partName: String,  preco: Double, setupName: String){
+
+    public fun deletePart(partName: String, preco: Double, setupName: String) {
         val updates = hashMapOf<String, Any>(
             partName to FieldValue.delete()
         )
 
-        listSetupsByTime("cresc").addOnSuccessListener {
-                documents->
-            for(document in documents){
-                if(document.data.get("name")?.equals(setupName)!!){
+        listSetupsByTime("cresc").addOnSuccessListener { documents ->
+            for (document in documents) {
+                if (document.data.get("name")?.equals(setupName)!!) {
                     updates.put("preco", document.data.get("preco") as Double - preco)
                     document.reference.update(updates)
                 }
@@ -83,8 +91,26 @@ class SetupController {
 
 
     public fun getByName(setupName: String): Task<QuerySnapshot> {
-        return setupFirebase.whereEqualTo("name", setupName).whereEqualTo("userUid", userUid.toString()).get()
+        return setupFirebase.whereEqualTo("name", setupName)
+            .whereEqualTo("userUid", userUid.toString()).get()
 
+    }
+
+    public fun getPartName(name: String, setupName: String, view: TextView) {
+        getByName(setupName).addOnSuccessListener { documents ->
+            for (document in documents) {
+                if (document.data.get(name) !== null) {
+                    partController.listPartsByAsin(document.data.get(name).toString())
+                        .addOnSuccessListener { response ->
+                            for (r in response) {
+                                view.text = r.data.get("nome").toString()
+
+                            }
+                        }
+
+                }
+            }
+        }
     }
 
 

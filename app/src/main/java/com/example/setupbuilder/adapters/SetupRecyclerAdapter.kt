@@ -58,10 +58,13 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
         holder.title.text = names.get(position)
         holder.infoOne.text = "CPU vazia"
         holder.infoTwo.text = "GPU vazia"
+        setups.getPartName("CPU", names.get(position), holder.infoOne)
+        setups.getPartName("Placa de vídeo", names.get(position), holder.infoTwo)
+
         if(price!==null){
             holder.image.visibility=View.VISIBLE
             holder.infoOne.visibility=View.GONE
-            holder.priceText.text=price.get(position).toString()
+            holder.priceText.text="R$" + price.get(position).toString()
             holder.infoTwo.visibility=View.GONE
             holder.card.setOnClickListener {
                 val intent = Intent(it.context, ViewProductActivity::class.java)
@@ -78,6 +81,8 @@ class SetupRecyclerAdapter(val names: ArrayList<String>, val price: ArrayList<St
                 .load(urls?.get(position).toString())
                 .into(holder.image);
         }else{
+
+
             holder.card.setOnClickListener {
                 val intent = Intent(it.context, ViewSetupActivity::class.java)
                 if (ids != null) {

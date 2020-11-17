@@ -27,14 +27,18 @@ class ListProductActivity: AppCompatActivity(){
     val precos = ArrayList<String>()
     val imgs = ArrayList<String>()
     val id = ArrayList<String>()
+    var setupName:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_product_activity)
 
+        if(intent.getStringExtra("setup")!==null){
+            setupName = intent.getStringExtra("setup").toString()
+        }
         layoutManager = LinearLayoutManager(this)
         list_product.layoutManager = layoutManager
-        adapter = SetupRecyclerAdapter(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), intent.getStringExtra("setup").toString())
+        adapter = SetupRecyclerAdapter(arrayListOf(), arrayListOf(), arrayListOf(), arrayListOf(), setupName)
 
         list_product.adapter = adapter
 
@@ -61,7 +65,7 @@ class ListProductActivity: AppCompatActivity(){
                 id.add(element.data.get("asin").toString())
             }
 
-            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id, intent.getStringExtra("setup").toString())
+            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id, setupName)
             list_product.adapter = adapter
 
             if(intent.getStringExtra("search") != null && intent.getStringExtra("search") != "") {
@@ -101,13 +105,16 @@ class ListProductActivity: AppCompatActivity(){
     }
 
     public fun search(){
+        if(intent.getStringExtra("setup")!==null){
+            setupName = intent.getStringExtra("setup").toString()
+        }
         val nomesS = ArrayList<String>()
         val precosS = ArrayList<String>()
         val imgsS = ArrayList<String>()
         val idS = ArrayList<String>()
         val text = search_part.text.toString()
         if(text == "")
-            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id, intent.getStringExtra("setup").toString())
+            adapter = SetupRecyclerAdapter(nomes, precos, imgs, id, setupName)
         else{
             for (i in 0..nomes.size-1){
                 if (nomes.get(i).toUpperCase().contains(text.toUpperCase())){

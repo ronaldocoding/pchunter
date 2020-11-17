@@ -35,7 +35,7 @@ class ViewProductActivity: AppCompatActivity() {
         controller.listPartsByAsin(intent.getStringExtra("name").toString()).addOnSuccessListener { response ->
             for (el in response){
                 url = el.data.get("url").toString()
-                product_price.setText(el.data.get("preco").toString())
+                product_price.setText("R$ " + el.data.get("preco").toString())
                 id_product.setText(el.data.get("nome").toString())
                 val keys = el.data.keys
 

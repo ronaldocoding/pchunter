@@ -15,14 +15,12 @@ class UserViewModel {
         mUser.signIn(email.text.toString(), password.text.toString())
             .addOnSuccessListener {
                 result = true
-                Toast.makeText(context, "Entrou aqui sucesso", Toast.LENGTH_LONG).show()
                 val intent = Intent(context, MenuActivity::class.java)
                 context.startActivity(intent)
                 return@addOnSuccessListener
 
             }
             .addOnFailureListener {
-                /*
                 if(it.message.toString().contains("password is invalid")){
                     password.setError("Senha incorreta.")
                 }else
@@ -40,7 +38,6 @@ class UserViewModel {
                         }
                 return@addOnFailureListener
 
-                 */
             }
         return result
     }

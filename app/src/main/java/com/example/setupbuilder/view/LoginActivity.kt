@@ -54,7 +54,6 @@ class LoginActivity : AppCompatActivity () {
             val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }else{
-            Toast.makeText(this, "entrou aqui", Toast.LENGTH_LONG).show()
             progressBar.visibility = View.INVISIBLE
         }
 

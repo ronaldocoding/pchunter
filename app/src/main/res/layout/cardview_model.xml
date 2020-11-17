@@ -63,7 +63,7 @@
         <TextView
             android:id="@+id/cardInfoOne"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="22dp"
             android:layout_marginBottom="3dp"
             android:text="Informação 1"
             style="@style/CustomText"
@@ -72,7 +72,7 @@
         <TextView
             android:id="@+id/cardInfoTwo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="22dp"
             android:layout_marginBottom="3dp"
             android:text="Informação 2"
             style="@style/CustomText"
