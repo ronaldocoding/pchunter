@@ -2,9 +2,9 @@ package com.example.setupbuilder.model
 
 import java.util.*
 
-class CPU(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String,
+class CPU(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String, image:String,
           coreCount:String, socket:String, architecture:String, thermalSolution:String):
-    Part(name, id, price, releaseYear, brand, details){
+    Part(name, id, price, releaseYear, brand, details, image){
 
     var coreCount: String = coreCount
         private set

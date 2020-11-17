@@ -2,9 +2,9 @@ package com.example.setupbuilder.model
 
 import java.util.*
 
-class Case(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String,
+class Case(name: String, id: String, price: Float, releaseYear:String, brand:String, details:String, image:String,
               formFactor: String, sideWindow:String):
-    Part(name, id, price, releaseYear, brand, details){
+    Part(name, id, price, releaseYear, brand, details, image){
 
     var formFactor: String = formFactor
         private set

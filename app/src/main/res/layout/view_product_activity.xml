@@ -28,6 +28,7 @@
         app:backgroundTint="@android:color/holo_green_dark" />
 
     <Button
+        android:id="@+id/addPart"
         style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,10 +38,11 @@
 
     <TextView
         style="@style/CustomText"
+        android:id="@+id/id_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Placa-Mãe Asus Prime B450M Gaming/BR"
+        android:text=""
         android:textSize="23dp"
         android:textStyle="bold" />
     <TextView
@@ -76,22 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Características:
-- Marca: ASUS
-- Modelo: Prime B450M Gaming/BR
-
-Especificações:
-
-Processadores:
-- AMD Socket AM4 AMD Ryzen 2ª Geração/ Ryzen com Radeon Vega Graphics/Ryzen 1ª Geração / Athlon Radeon Vega Graphics
-- TDP: 105W
-
-Chipset:
-- AMD B450
-Peso
-860 gramas (bruto com embalagem)"
+        android:id="@+id/caracteristicas"
+        android:text=""
         android:textSize="15dp" />
-
-
 </LinearLayout>
 </ScrollView>

@@ -1,27 +1,88 @@
 package com.example.setupbuilder.view
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.setupbuilder.R
+import com.example.setupbuilder.controller.PartController
+import com.example.setupbuilder.controller.SetupController
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.set_setup_dialog.*
+import kotlinx.android.synthetic.main.set_setup_dialog.view.*
 import kotlinx.android.synthetic.main.view_product_activity.*
+import kotlin.reflect.typeOf
 
 class ViewProductActivity: AppCompatActivity() {
+    var url:String=""
+    var infos:String = "Características: "
+    var value:String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_product_activity)
+        val cSetup = SetupController()
+        val controller = PartController()
 
-        Picasso.get()
-            .load("https://images4.kabum.com.br/produtos/fotos/99504/placa-mae-asus-para-amd-am4-matx-prime-b450m-gaming-br-ddr4__1545143134_gg.jpg")
-            .into(product_image);
+
+        controller.listPartsByAsin(intent.getStringExtra("name").toString()).addOnSuccessListener { response ->
+            for (el in response){
+                url = el.data.get("url").toString()
+                product_price.setText(el.data.get("preco").toString())
+                id_product.setText(el.data.get("nome").toString())
+                val keys = el.data.keys
+
+                for(key in keys){
+                    if(key != "img" && key != "url" && key != "preco" && key != "nome" && key != "produto") {
+                        value = el.data.get(key).toString()
+                        infos += key + ": " + value + "\n"
+                    }
+                }
+                caracteristicas.text = infos
+                Picasso.get()
+                    .load( el.data.get("img").toString())
+                    .into(product_image);
+                addPart.setOnClickListener {
+                    if(!intent.getStringExtra("setup").isNullOrBlank()){
+                        cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(),el.get("preco") as Double ,intent.getStringExtra("setup").toString(), this)
+                    }else{
+                        val mDialogView = LayoutInflater.from(this).inflate(R.layout.set_setup_dialog, null)
+                        //AlertDialogBuilder
+                        val mBuilder = AlertDialog.Builder(this)
+                            .setView(mDialogView)
+                        val  mAlertDialog = mBuilder.show()
+
+                        val adapter : ArrayAdapter<String> =  ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+
+                        mDialogView.setup_list.adapter = adapter
+
+                        cSetup.listSetupsByTime("cresc").addOnSuccessListener {
+                            documents->
+                                for(document in documents){
+                                    adapter.add(document.data.get("name").toString())
+                                }
+                        }
+
+                        mDialogView.setup_list.setOnItemClickListener { adapterView, view, i, l ->
+                            mAlertDialog.dismiss()
+                            cSetup.addPart(el.get("produto").toString() , el.get("asin").toString(),el.get("preco") as Double, adapter.getItem(i).toString(), this)
+                        }
+                    }
+                }
+            }
+
+        }
+
     }
 
     fun getUrlFromIntent(view: View) {
-        val url = "https://www.kabum.com.br/produto/99504/placa-mae-asus-prime-b450m-gaming-br-amd-am4-matx-ddr4?gclid=CjwKCAiAnIT9BRAmEiwANaoE1ZC5VdC_XGLBXOfSfxibdol9RE003d2kFr7NVF2mOJg64IpHMijOvxoCXqcQAvD_BwE"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         startActivity(intent)

@@ -1,20 +1,12 @@
 package com.example.setupbuilder.view
 
-import android.app.DownloadManager
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.TipsRecyclerAdapter
-import com.example.setupbuilder.controller.APIController
-import com.example.setupbuilder.model.Part
-import com.example.setupbuilder.model.Setup
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
-import kotlinx.android.synthetic.main.new_setup_activity.*
 import kotlinx.android.synthetic.main.view_part_activity.*
 
 class ViewPartActivity : AppCompatActivity() {
@@ -33,6 +25,20 @@ class ViewPartActivity : AppCompatActivity() {
         "Headset",
         "Fonte de Alimentação (PSU)",
         "Gabinete (Case)"
+    )
+
+    private val key = arrayOf(
+        "CPU",
+        "placa-mãe",
+        "Memória RAM",
+        "Placa de vídeo",
+        "hd externo",
+        "Monitor",
+        "Teclado",
+        "Mouse",
+        "Headset",
+        "Fonte de alimentação",
+        "Gabinete"
     )
 
     private val definitions = arrayOf(
@@ -171,9 +177,12 @@ class ViewPartActivity : AppCompatActivity() {
         adapter = TipsRecyclerAdapter(tips[pos])
         tips_list.adapter = adapter
 
+
         imageView2.setImageResource(photos[pos])
         partList.setOnClickListener {
-            startActivity(Intent(this, ListProductActivity::class.java))
+            val intent = Intent(this, ListProductActivity::class.java)
+            intent.putExtra("peca", key[pos])
+            startActivity(intent)
         }
     }
 

@@ -10,7 +10,6 @@ import com.example.setupbuilder.controller.SetupController
 import com.example.setupbuilder.controller.UserController
 import com.google.firebase.firestore.FieldValue.serverTimestamp
 import kotlinx.android.synthetic.main.new_setup_activity.*
-import java.sql.Timestamp
 
 class NewSetupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +25,7 @@ class NewSetupActivity : AppCompatActivity() {
                 setup_name.setError("Este campo não pode ficar vazio")
             }else{
                 var i = 0
-                setups.listSetups().addOnSuccessListener { documents ->
+                setups.listSetupsByTime("cresc").addOnSuccessListener { documents ->
                     var equal = false
 
                     for(document in documents){
@@ -40,7 +39,7 @@ class NewSetupActivity : AppCompatActivity() {
                     if (!equal){
                         var setup = user?.uid?.let { it1 ->
                             Setup(
-                                sName.toString(), serverTimestamp(), it1
+                                sName.toString(), serverTimestamp(), it1, 0.0
                             )
                         }
 
