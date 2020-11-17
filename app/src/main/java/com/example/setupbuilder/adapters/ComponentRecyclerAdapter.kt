@@ -27,7 +27,7 @@ class ComponentRecyclerAdapter(val setupName: String) :  RecyclerView.Adapter<Co
         "Placa-mãe",
         "Memória RAM",
         "Placa de vídeo",
-        "HD externo",
+        "Disco de Armazenamento (Storage)",
         "Monitor",
         "Teclado",
         "Mouse",

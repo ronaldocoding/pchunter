@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:textSize="15dp"
-        android:text="Preço(Crescente)"/>
+        android:text="Preço(Decrescente)"/>
 
     <View
         android:id="@+id/divider3"
@@ -40,6 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:textSize="15dp"
-        android:text="Preço(Decescente)"/>
+        android:text="Preço(Crescente)"/>
 
 </LinearLayout>

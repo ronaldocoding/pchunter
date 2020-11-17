@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.SetupRecyclerAdapter
 import com.example.setupbuilder.controller.PartController
+import com.example.setupbuilder.controller.SetupController
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.list_product_activity.*
 import kotlinx.android.synthetic.main.part_filter_dialog.view.*
@@ -21,6 +22,7 @@ class ListProductActivity: AppCompatActivity(){
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<SetupRecyclerAdapter.ViewHolder>? = null
     val controller = PartController()
+    val setupController = SetupController()
     val nomes = ArrayList<String>()
     val precos = ArrayList<String>()
     val imgs = ArrayList<String>()
@@ -37,8 +39,9 @@ class ListProductActivity: AppCompatActivity(){
         list_product.adapter = adapter
 
         var setup:String? = null
-        if(intent.getStringExtra("setup")!= null)
+        if(intent.getStringExtra("setup")!= null) {
             setup = intent.getStringExtra("setup")
+        }
 
 
 //        controller.listPartsByTerm(intent.getStringExtra("peca").toString()).addOnSuccessListener { response ->
@@ -48,10 +51,10 @@ class ListProductActivity: AppCompatActivity(){
             search()
         }
 
+
         controller.listPartsByTerm(peca, intent.getStringExtra("order").toString()).addOnSuccessListener { response ->
+            for (element in response) {
 
-
-            for(element in response){
                 nomes.add(element.data.get("nome").toString())
                 precos.add(element.data.get("preco").toString())
                 imgs.add(element.data.get("img").toString())
@@ -59,7 +62,6 @@ class ListProductActivity: AppCompatActivity(){
             }
 
             adapter = SetupRecyclerAdapter(nomes, precos, imgs, id, intent.getStringExtra("setup").toString())
-
             list_product.adapter = adapter
 
             if(intent.getStringExtra("search") != null && intent.getStringExtra("search") != "") {
