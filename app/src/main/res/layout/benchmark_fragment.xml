@@ -24,7 +24,7 @@
             app:backgroundTint="@android:color/holo_red_dark" />
 
         <Button
-            android:id="@+id/sign_out"
+            android:id="@+id/gpu_benchmark_button"
             style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
