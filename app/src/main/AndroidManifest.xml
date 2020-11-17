@@ -31,6 +31,8 @@
         <activity android:name=".view.ListProductActivity" />
         <activity android:name=".view.ViewProductActivity" />
         <activity android:name=".view.CpuBenchmarkActivity"/>
+        <activity android:name=".view.GpuBenchmarkActivity"/>
+
     </application>
 
 </manifest>
