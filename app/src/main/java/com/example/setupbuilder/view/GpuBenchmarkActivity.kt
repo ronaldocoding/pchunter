@@ -9,16 +9,16 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import kotlinx.android.synthetic.main.view_cpu_benchmark_activity.*
+import kotlinx.android.synthetic.main.view_gpu_benchmark_activity.*
 
 
-class CpuBenchmarkActivity : AppCompatActivity() {
+class GpuBenchmarkActivity : AppCompatActivity() {
 
     lateinit var benchmarkChart: HorizontalBarChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view_cpu_benchmark_activity)
+        setContentView(R.layout.view_gpu_benchmark_activity)
         benchmarkChart = horizontal_bar_chart
         configuresBarChart()
     }
@@ -45,7 +45,7 @@ class CpuBenchmarkActivity : AppCompatActivity() {
         xAxis.labelCount = 28
 
         val yLeft = benchmarkChart.axisLeft
-        yLeft.axisMaximum = 35000F
+        yLeft.axisMaximum = 30000F
         yLeft.axisMinimum = 0F
         yLeft.textColor = Color.rgb(255, 255, 255)
         yLeft.isEnabled = false
@@ -74,67 +74,67 @@ class CpuBenchmarkActivity : AppCompatActivity() {
 
     private fun getDataSet(): BarDataSet {
         val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(27f, 8983f))
-        entries.add(BarEntry(26f, 9408f))
-        entries.add(BarEntry(25f, 9596f))
-        entries.add(BarEntry(24f, 10872f))
-        entries.add(BarEntry(23f, 11760f))
-        entries.add(BarEntry(22f, 12421f))
-        entries.add(BarEntry(21f, 12708f))
-        entries.add(BarEntry(20f, 12779f))
-        entries.add(BarEntry(19f, 12786f))
-        entries.add(BarEntry(18f, 13085f))
-        entries.add(BarEntry(17f, 13221f))
-        entries.add(BarEntry(16f, 13382f))
-        entries.add(BarEntry(15f, 14075f))
-        entries.add(BarEntry(14f, 14619f))
-        entries.add(BarEntry(13f, 14640f))
-        entries.add(BarEntry(12f, 17587f))
-        entries.add(BarEntry(11f, 17859f))
-        entries.add(BarEntry(10f, 18334f))
-        entries.add(BarEntry(9f, 18880f))
-        entries.add(BarEntry(8f, 19693f))
-        entries.add(BarEntry(7f, 21164f))
-        entries.add(BarEntry(6f, 21908f))
-        entries.add(BarEntry(5f, 22237f))
-        entries.add(BarEntry(4f, 22683f))
-        entries.add(BarEntry(3f, 22822f))
-        entries.add(BarEntry(2f, 23350f))
-        entries.add(BarEntry(1f, 24272f))
-        entries.add(BarEntry(0f, 30863f))
+        entries.add(BarEntry(0f, 25029f))
+        entries.add(BarEntry(1f, 23882f))
+        entries.add(BarEntry(2f, 21586f))
+        entries.add(BarEntry(3f, 21502f))
+        entries.add(BarEntry(4f, 19374f))
+        entries.add(BarEntry(5f, 18607f))
+        entries.add(BarEntry(6f, 18128f))
+        entries.add(BarEntry(7f, 17647f))
+        entries.add(BarEntry(8f, 16711f))
+        entries.add(BarEntry(9f, 16381f))
+        entries.add(BarEntry(10f, 16171f))
+        entries.add(BarEntry(11f, 14796f))
+        entries.add(BarEntry(12f, 14456f))
+        entries.add(BarEntry(13f, 14053f))
+        entries.add(BarEntry(14f, 14047f))
+        entries.add(BarEntry(15f, 13771f))
+        entries.add(BarEntry(16f, 13467f))
+        entries.add(BarEntry(17f, 13309f))
+        entries.add(BarEntry(18f, 12669f))
+        entries.add(BarEntry(19f, 12205f))
+        entries.add(BarEntry(20f, 11553f))
+        entries.add(BarEntry(21f, 11066f))
+        entries.add(BarEntry(22f, 10154f))
+        entries.add(BarEntry(23f, 9818f))
+        entries.add(BarEntry(24f, 9482f))
+        entries.add(BarEntry(25f, 9220f))
+        entries.add(BarEntry(26f, 8951f))
+        entries.add(BarEntry(27f, 8748f))
         return BarDataSet(entries, "Bar Data Set")
     }
 
     private fun getXAxisValues(): ArrayList<String> {
         val xAxis = ArrayList<String>()
-        xAxis.add("Ryzen 3900")
-        xAxis.add("i9-10900K")
-        xAxis.add("Ryzen 3800X")
-        xAxis.add("Ryzen 3700X")
-        xAxis.add("i9-10900X")
-        xAxis.add("Ryzen 5600X")
-        xAxis.add("i9-9900X")
-        xAxis.add("Ryzen 4700G")
-        xAxis.add("i7-10700K")
-        xAxis.add("i9-9900K")
-        xAxis.add("Ryzen 3600X")
-        xAxis.add("Ryzen 3600")
-        xAxis.add("Ryzen 2700X")
-        xAxis.add("i5-10600K")
-        xAxis.add("i7-9700K")
-        xAxis.add("Ryzen 2600X")
-        xAxis.add("Ryzen 3500X")
-        xAxis.add("Ryzen 2600")
-        xAxis.add("Ryzen 1600X")
-        xAxis.add("Ryzen 3300X")
-        xAxis.add("Ryzen 3500")
-        xAxis.add("i5-10400F")
-        xAxis.add("Ryzen 1600")
-        xAxis.add("Ryzen 3100")
-        xAxis.add("i5-9600K")
-        xAxis.add("i5-9400F")
-        xAxis.add("Ryzen 3400G")
-        xAxis.add("i3-10100")
+        xAxis.add("RTX 3090")
+        xAxis.add("RTX 3080")
+        xAxis.add("RTX 2080 Ti")
+        xAxis.add("RTX 3070")
+        xAxis.add("RTX 2080 S")
+        xAxis.add("RTX 2080")
+        xAxis.add("RTX 2070 S")
+        xAxis.add("GTX 1080 Ti")
+        xAxis.add("RX 5700 XT")
+        xAxis.add("RTX 2060 S")
+        xAxis.add("RTX 2070")
+        xAxis.add("GTX 1080")
+        xAxis.add("RX 5700")
+        xAxis.add("GTX 1070 Ti")
+        xAxis.add("RTX 2060")
+        xAxis.add("GTX 980 Ti")
+        xAxis.add("RX 5600 XT")
+        xAxis.add("GTX 1070")
+        xAxis.add("GTX 1660 S")
+        xAxis.add("GTX 1660 Ti")
+        xAxis.add("GTX 1660")
+        xAxis.add("GTX 980")
+        xAxis.add("GTX 1060")
+        xAxis.add("GTX 1650 S")
+        xAxis.add("GTX 970")
+        xAxis.add("RX 590")
+        xAxis.add("GTX 780 Ti")
+        xAxis.add("RX 580")
         return xAxis
     }
 

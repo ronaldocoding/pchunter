@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.setupbuilder.R
 import com.example.setupbuilder.adapters.PartRecyclerAdapter
 import com.example.setupbuilder.view.CpuBenchmarkActivity
+import com.example.setupbuilder.view.GpuBenchmarkActivity
 import com.example.setupbuilder.view.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -38,6 +39,11 @@ class BenchmarkFragment : Fragment() {
 
         cpu_benchmark_button.setOnClickListener {
             val intent = Intent(context, CpuBenchmarkActivity::class.java)
+            startActivity(intent)
+        }
+
+        gpu_benchmark_button.setOnClickListener {
+            val intent = Intent(context, GpuBenchmarkActivity::class.java)
             startActivity(intent)
         }
     }
