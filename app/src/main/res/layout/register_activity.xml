@@ -33,38 +33,56 @@
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         tools:layout_editor_absoluteY="61dp" />
 
-    <EditText
-        android:id="@+id/password_register"
-        style="@style/CustomInput"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_light_input"
-        android:drawableStart="@drawable/custom_password_light_icon"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Digite sua senha"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/email_register"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/email_register"
-        tools:layout_editor_absoluteY="121dp" />
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/write">
 
-    <EditText
-        android:id="@+id/password_register2"
-        style="@style/CustomInput"
+        <EditText
+            android:id="@+id/password_register"
+            style="@style/CustomInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_light_input"
+            android:drawableStart="@drawable/custom_password_light_icon"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Digite sua senha"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/email_register"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/email_register"
+            tools:layout_editor_absoluteY="121dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/round_light_input"
-        android:drawableStart="@drawable/custom_password_light_icon"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Confirme sua senha"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/email_register"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/email_register"
-        tools:layout_editor_absoluteY="121dp" />
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/write">
+
+        <EditText
+            android:id="@+id/password_register2"
+            style="@style/CustomInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/round_light_input"
+            android:drawableStart="@drawable/custom_password_light_icon"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Confirme sua senha"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/email_register"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/email_register"
+            tools:layout_editor_absoluteY="121dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button_register"
