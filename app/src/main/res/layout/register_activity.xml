@@ -22,7 +22,7 @@
         style="@style/CustomInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="5dp"
         android:background="@drawable/round_light_input"
         android:drawableStart="@drawable/custom_email_light_icon"
         android:drawablePadding="10dp"
