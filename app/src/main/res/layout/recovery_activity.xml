@@ -22,7 +22,7 @@
         android:ems="10"
         style="@style/CustomInput"
         android:inputType="textEmailAddress"
-        android:hint="email@email.com"
+        android:hint="exemplo@email.com"
         tools:layout_editor_absoluteX="77dp"
         tools:layout_editor_absoluteY="167dp"
         android:layout_marginVertical="10dp"/>

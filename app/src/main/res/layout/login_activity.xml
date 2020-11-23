@@ -77,6 +77,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="Não é registrado? Cadastre-se" />
+        android:text="Não é cadastrado? Cadastre-se" />
 
 </LinearLayout>
