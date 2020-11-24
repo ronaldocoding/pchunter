@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="50dp"
-            android:text="CPU Benchmarks"
+            android:text="Benchmarks de CPU (Processador)"
             app:backgroundTint="@android:color/holo_red_dark" />
 
         <Button
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:paddingVertical="50dp"
-            android:text="GPU Benchmarks"
+            android:text="Benchmarks de GPU (Placa\n\nde Vídeo)"
             app:backgroundTint="@android:color/holo_green_dark" />
 
     </LinearLayout>

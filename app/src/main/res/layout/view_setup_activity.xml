@@ -23,20 +23,24 @@
     <TextView
         android:id="@+id/name"
         style="@style/CustomText"
-        android:textSize="15dp"
+        android:textSize="18dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
         android:drawableRight="@drawable/ic_baseline_edit_24"
         android:layout_width="wrap_content"
-        android:drawablePadding="10dp"
+        android:drawablePadding="14dp"
         android:layout_height="wrap_content"
         android:text="teste" />
+
     <TextView
         android:id="@+id/label_price"
+        style="@style/CustomText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Preço total"
         android:textSize="20dp"
-        style="@style/CustomText"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
