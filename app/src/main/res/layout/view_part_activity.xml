@@ -1,81 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="top"
-    android:orientation="vertical"
-    android:padding="30dp"
-    android:focusableInTouchMode="true"
-    >
-
-    <TextView
-        android:id="@+id/compName"
-        style="@style/CustomText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Componente"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        />
-
-    <Button
-        android:id="@+id/partList"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver lista" />
+        android:layout_gravity="top"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:padding="30dp">
 
-    <TextView
-        android:id="@+id/textView7"
-        style="@style/CustomText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="O que é?"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/compName"
+            style="@style/CustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Componente"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/processador"/>
+        <Button
+            android:id="@+id/partList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver lista" />
 
-    <TextView
-        android:id="@+id/definition_text"
-        style="@style/CustomText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever s,"
-        android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/CustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="O que é?"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <TextView
-        style="@style/CustomText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="15dp"
-        android:text="Dicas para comprar"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/processador" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tips_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"
-        />
+        <TextView
+            android:id="@+id/definition_text"
+            style="@style/CustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever s,"
+            android:textSize="15dp" />
 
-</LinearLayout>
+        <TextView
+            style="@style/CustomText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="15dp"
+            android:text="Dicas para comprar"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tips_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>
