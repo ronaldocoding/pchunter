@@ -27,8 +27,10 @@
             style="@style/CustomText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginTop="30dp"
             android:text="E-mail" />
-
+        
         <EditText
             android:id="@+id/password_home_input"
             style="@style/CustomInput"
@@ -39,7 +41,7 @@
             android:drawablePadding="10dp"
             android:ems="10"
             android:hint="Senha"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/delete_button"
