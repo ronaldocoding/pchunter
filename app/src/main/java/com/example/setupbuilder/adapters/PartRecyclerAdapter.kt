@@ -17,7 +17,7 @@ class PartRecyclerAdapter() :  RecyclerView.Adapter<PartRecyclerAdapter.ViewHold
         "Placa-mãe (Motherboard)",
         "Memória de Acesso Aleatório (RAM)",
         "Placa de vídeo(GPU)",
-        "Disco de Armazenamento (Storage)",
+        "HDD e SSD (Storage)",
         "Monitor",
         "Teclado",
         "Mouse",
