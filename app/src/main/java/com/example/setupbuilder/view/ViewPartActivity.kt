@@ -75,8 +75,8 @@ class ViewPartActivity : AppCompatActivity() {
         R.drawable.teclado,
         R.drawable.mouse,
         R.drawable.headseat,
-        R.drawable.fonte,
-        R.drawable.gabinete
+        R.drawable.psu_icon,
+        R.drawable.case_icon
     )
 
     private val tips = arrayOf(
