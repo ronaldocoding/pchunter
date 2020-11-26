@@ -2,25 +2,42 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="32dp">
+    android:scrollbars="none"
+    android:layout_margin="30dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            style="@style/CustomText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:text="CPU Benchmark - PassMark"
-            android:textSize="24dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/CustomText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:text="CPU Benchmark - PassMark"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/cpu_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/ic_baseline_filter_list_24" />
+
+        </LinearLayout>
 
         <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/horizontal_bar_chart"
             android:layout_width="match_parent"
-            android:layout_height="5000dp" />
+            android:layout_height="1000dp" />
+
 
     </LinearLayout>
 

@@ -31,7 +31,7 @@ class CpuBenchmarkActivity : AppCompatActivity() {
         setBarChartColor(barDataSet)
         barDataSet.setDrawValues(true)
         val barData = BarData(barDataSet)
-        barData.barWidth = 0.45F
+        barData.barWidth = 0.7F
         barData.setValueTextColor(Color.rgb(255, 255, 255))
         barData.setValueTextSize(16F)
 
