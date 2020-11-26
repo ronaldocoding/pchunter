@@ -1,8 +1,11 @@
 package com.example.setupbuilder.view
 
+import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.setupbuilder.R
 import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.data.BarData
@@ -25,9 +28,8 @@ class CpuBenchmarkActivity : AppCompatActivity() {
 
     private fun configuresBarChart() {
         var barDataSet = getDataSet()
-        barDataSet.color = Color.rgb(103, 1, 183)
+        setBarChartColor(barDataSet)
         barDataSet.setDrawValues(true)
-
         val barData = BarData(barDataSet)
         barData.barWidth = 0.45F
         barData.setValueTextColor(Color.rgb(255, 255, 255))
@@ -138,4 +140,36 @@ class CpuBenchmarkActivity : AppCompatActivity() {
         return xAxis
     }
 
+    private fun setBarChartColor(barData: BarDataSet) {
+        barData.setColors(
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange),
+            ContextCompat.getColor(benchmarkChart.context, R.color.intelBlue),
+            ContextCompat.getColor(benchmarkChart.context, R.color.amdOrange)
+        )
+    }
 }
