@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.setupbuilder.R
+import com.example.setupbuilder.util.RoundedBarChart
 import com.github.mikephil.charting.charts.HorizontalBarChart
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
@@ -70,6 +71,8 @@ class CpuBenchmarkActivity : AppCompatActivity() {
         benchmarkChart.setFitBars(true)
         benchmarkChart.description.text = ""
         benchmarkChart.data = barData
+        benchmarkChart.renderer =
+            RoundedBarChart(benchmarkChart, benchmarkChart.animator, benchmarkChart.viewPortHandler)
         benchmarkChart.animateY(1000)
         benchmarkChart.invalidate()
     }
