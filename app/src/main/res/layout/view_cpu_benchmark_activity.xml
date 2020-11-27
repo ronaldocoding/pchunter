@@ -36,7 +36,7 @@
         <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/horizontal_bar_chart"
             android:layout_width="match_parent"
-            android:layout_height="1000dp" />
+            android:layout_height="1800dp" />
 
 
     </LinearLayout>
