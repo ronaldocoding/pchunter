@@ -2,32 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#1c1b1a"
-    android:paddingVertical="10dp"
-    android:paddingHorizontal="30dp">
+    android:orientation="vertical"
+    android:paddingHorizontal="30dp"
+    android:paddingVertical="10dp">
 
     <TextView
         android:id="@+id/exclusion_title"
+        style="@style/CustomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        style="@style/CustomText"
-        android:textStyle="bold"
+        android:text="Exclusão de conta"
         android:textSize="20dp"
-        android:text="Exclusão de conta" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/exclusion_text"
+        style="@style/CustomText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/CustomText"
-        android:textAlignment="center"
-        android:text="Tem certeza que deseja excluir sua conta? Não será possível recuperar seus dados posteriormente."/>
+        android:text="Tem certeza que deseja excluir sua conta? Não será possível recuperar seus dados posteriormente."
+        android:textAlignment="center" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
@@ -36,13 +37,15 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:backgroundTint="#2c2c2c"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textColor="@color/write" />
 
         <Button
             android:id="@+id/confirm_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Excluir" />
+            android:text="Excluir"
+            android:textColor="@color/write" />
 
     </LinearLayout>
 
