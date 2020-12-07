@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.setupbuilder">
+    package="br.com.setupbuilder">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.SplashActivity"
+            android:name="br.com.setupbuilder.view.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,20 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.LoginActivity" />
-        <activity android:name=".view.SettingsActivity" />
+        <activity android:name="br.com.setupbuilder.view.LoginActivity" />
+        <activity android:name="br.com.setupbuilder.view.SettingsActivity" />
         <activity
-            android:name=".view.RegisterActivity"
+            android:name="br.com.setupbuilder.view.RegisterActivity"
             android:theme="@style/AppLightTheme" />
-        <activity android:name=".view.MenuActivity" />
-        <activity android:name=".view.NewSetupActivity" />
-        <activity android:name=".view.ViewSetupActivity" />
-        <activity android:name=".view.PasswordRecoveryActivity" />
-        <activity android:name=".view.ViewPartActivity" />
-        <activity android:name=".view.ListProductActivity" />
-        <activity android:name=".view.ViewProductActivity" />
-        <activity android:name=".view.CpuBenchmarkActivity"/>
-        <activity android:name=".view.GpuBenchmarkActivity"/>
+        <activity android:name="br.com.setupbuilder.view.MenuActivity" />
+        <activity android:name="br.com.setupbuilder.view.NewSetupActivity" />
+        <activity android:name="br.com.setupbuilder.view.ViewSetupActivity" />
+        <activity android:name="br.com.setupbuilder.view.PasswordRecoveryActivity" />
+        <activity android:name="br.com.setupbuilder.view.ViewPartActivity" />
+        <activity android:name="br.com.setupbuilder.view.ListProductActivity" />
+        <activity android:name="br.com.setupbuilder.view.ViewProductActivity" />
+        <activity android:name="br.com.setupbuilder.view.CpuBenchmarkActivity"/>
+        <activity android:name="br.com.setupbuilder.view.GpuBenchmarkActivity"/>
 
     </application>
 
