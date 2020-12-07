@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#1c1b1a"
-    android:paddingVertical="10dp"
-    android:paddingHorizontal="30dp">
+    android:orientation="vertical"
+    android:paddingHorizontal="30dp"
+    android:paddingVertical="10dp">
 
     <TextView
         android:id="@+id/text_dialog"
+        style="@style/CustomText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        style="@style/CustomText"
-        android:textStyle="bold"
+        android:text="Crie um Setup"
         android:textSize="20dp"
-        android:text="Crie um Setup" />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/dialogEditText"
@@ -32,7 +32,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
@@ -41,13 +41,16 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:backgroundTint="#2c2c2c"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textColor="@color/write" />
 
         <Button
             android:id="@+id/submit_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Criar" />
+            android:gravity="center"
+            android:text="Criar"
+            android:textColor="@color/write" />
 
     </LinearLayout>
 
