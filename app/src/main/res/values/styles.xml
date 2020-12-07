@@ -38,10 +38,16 @@
     <style name="PrimaryButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:background">@drawable/primary_button</item>
         <item name="android:fontFamily">@font/overpass_font_family</item>
+        <item name="android:textColor">@color/write</item>
         <item name="android:textSize">15dp</item>
     </style>
     <style name="CustomText">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:paddingStart">0dp</item>
+    </style>
+    <style name="CustomRadioButton">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/write</item>
+        <item name="android:textSize">15dp</item>
     </style>
 </resources>

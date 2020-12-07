@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Filtrar"
+        android:text="Filtros"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -26,23 +26,25 @@
         android:text="Fabricante"
         android:textSize="18dp" />
 
-    <CheckBox
-        android:id="@+id/amd_filter"
+    <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="AMD"
-        android:textColor="@color/write"
-        android:textSize="15dp" />
+        android:layout_height="wrap_content">
 
-    <CheckBox
-        android:id="@+id/nvidia_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="NVIDIA"
-        android:textColor="@color/write"
-        android:textSize="15dp" />
+        <RadioButton
+            android:id="@+id/amd_filter"
+            style="@style/CustomRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AMD" />
+
+        <RadioButton
+            android:id="@+id/nvidia_filter"
+            style="@style/CustomRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NVIDIA" />
+
+    </RadioGroup>
 
     <View
         android:layout_width="match_parent"
@@ -58,22 +60,33 @@
         android:text="Performance"
         android:textSize="18dp" />
 
-    <CheckBox
-        android:id="@+id/cresc_filter"
+    <RadioGroup
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Crescente"
-        android:textColor="@color/write"
-        android:textSize="15dp" />
+        android:layout_height="wrap_content">
 
-    <CheckBox
-        android:id="@+id/decresc_filter"
+        <RadioButton
+            android:id="@+id/cresc_filter"
+            style="@style/CustomRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crescente" />
+
+        <RadioButton
+            android:id="@+id/decresc_filter"
+            style="@style/CustomRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Decrescente" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_filter"
+        style="@style/PrimaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Decrescente"
-        android:textColor="@color/write"
-        android:textSize="15dp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="FILTRAR" />
 
 </LinearLayout>
