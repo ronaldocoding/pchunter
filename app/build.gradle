@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.setupbuilder"
+        applicationId "br.com.setupbuilder"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
