@@ -1,2 +1,2 @@
-# setup-builder
-PC Building Platform for Android
+# pchunter
+PC Building and Sharing Platform for Android
