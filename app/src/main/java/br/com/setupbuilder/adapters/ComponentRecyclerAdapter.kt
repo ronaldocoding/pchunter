@@ -118,7 +118,7 @@ class ComponentRecyclerAdapter(val setupName: String) :  RecyclerView.Adapter<Co
                                         mDialogView.exclusion_text.setText("Tem certeza que deseja remover este componente? Poderá adicioná-lo novamente procurando-o na lista de produtos.")
                                         mDialogView.confirm_dialog.setOnClickListener {
                                             cSetup.deletePart(
-                                                document.data.get("produto").toString(), document.data.get("preco") as Double ,setupName
+                                                document.data.get("produto").toString(), document.data.get("preco").toString().toDouble() ,setupName
                                             )
                                             holder.title.text = add + ItemTitles[position]
                                             holder.add.visibility = View.VISIBLE
